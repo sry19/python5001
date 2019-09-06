@@ -1,0 +1,5 @@
+print("Name: Ruoyun Sun")
+print("Birthday: 11/16/1996")
+print("Hobbies: painting; dancing")
+print("Favourite book: A Dream in Red Mansions")
+print("Favourite movie: The Avengers")
