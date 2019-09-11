@@ -9,26 +9,41 @@ def main():
     reserve=max_heart_rate-restHR
     print("Your heart rate reserve is:",reserve,"bpm")
     print("Here is a breakdown of your training zones:")
+
+    #difine low bound and high bound constants
+    #difine distance between low bound and previous high bound
+    ZONE1_LB=0.5
+    ZONE2_LB=0.6
+    ZONE3_LB=0.7
+    ZONE4_LB=0.8
+    ZONE5_LB=0.93
+    ZONE5_HB=1
+    LB_TO_HB=0.01
+
     #compute zone1
-    zone1low=restHR+reserve*0.5
-    zone1high=restHR+reserve*0.6
-    print("Zone 1:",round(zone1low,2),"to",round(zone1high,2),"bpm")
+    zone1_low=restHR+reserve*ZONE1_LB
+    zone1_high=restHR+reserve*ZONE2_LB
+    print("Zone 1:",round(zone1_low,2),"to",round(zone1_high,2),"bpm")
+
     #compute zone2
-    zone2low=restHR+reserve*0.6+0.01
-    zone2high=restHR+reserve*0.7
-    print("Zone 2:",round(zone2low,2),"to",round(zone2high,2),"bpm")
+    zone2_low=restHR+reserve*ZONE2_LB+LB_TO_HB
+    zone2_high=restHR+reserve*ZONE3_LB
+    print("Zone 2:",round(zone2_low,2),"to",round(zone2_high,2),"bpm")
+
     #compute zone3
-    zone3low=restHR+reserve*0.7+0.01
-    zone3high=restHR+reserve*0.8
-    print("Zone 3:",round(zone3low,2),"to",round(zone3high,2),"bpm")
+    zone3_low=restHR+reserve*ZONE3_LB+LB_TO_HB
+    zone3_high=restHR+reserve*ZONE4_LB
+    print("Zone 3:",round(zone3_low,2),"to",round(zone3_high,2),"bpm")
+
     #compute zone4
-    zone4low=restHR+reserve*0.8+0.01
-    zone4high=restHR+reserve*0.93
-    print("Zone 4:",round(zone4low,2),"to",round(zone4high,2),"bpm")
+    zone4_low=restHR+reserve*ZONE4_LB+LB_TO_HB
+    zone4_high=restHR+reserve*ZONE5_LB
+    print("Zone 4:",round(zone4_low,2),"to",round(zone4_high,2),"bpm")
+
     #compute zone5
-    zone5low=restHR+reserve*0.93+0.01
-    zone5high=restHR+reserve
-    print("Zone 5:",round(zone5low,2),"to",round(zone5high,2),"bpm")
+    zone5_low=restHR+reserve*ZONE5_LB+LB_TO_HB
+    zone5_high=restHR+reserve*ZONE5_HB
+    print("Zone 5:",round(zone5_low,2),"to",round(zone5_high,2),"bpm")
 
     print("=======================================")
 
