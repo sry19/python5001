@@ -15,7 +15,7 @@ def diff_of_temp(highest_temp, lowest_temp):
             min_low_temp = i
 
     difference_high_low = max_high_temp - min_low_temp
-    print("The difference between the highest and the lowest temprature values predicted for the 10 day forecast:",difference_high_low,"Fahrenheit")
+    print("The difference between the highest and the lowest temprature values predicted for the 10 day forecast:", difference_high_low, "Fahrenheit")
 
 # input tempratures at noon
 noon_temp = [66, 69, 66, 64, 60, 60, 59, 60, 62, 63]
