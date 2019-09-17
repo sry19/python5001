@@ -6,8 +6,8 @@ def main():
 
     # compute the maximum heart rate and reserve
     max_heart_rate = 208 - 0.7 * age
-    reserve=max_heart_rate-restHR
-    print("Your heart rate reserve is:",reserve,"bpm")
+    reserve = max_heart_rate - restHR
+    print("Your heart rate reserve is:", reserve, "bpm")
     print("Here is a breakdown of your training zones:")
 
     # difine low bound and high bound constants
@@ -21,18 +21,18 @@ def main():
     LB_TO_HB = 0.01
 
     # compute zone1
-    zone1_low = restHR+reserve * ZONE1_LB
-    zone1_high = restHR+reserve * ZONE2_LB
+    zone1_low = restHR + reserve * ZONE1_LB
+    zone1_high = restHR + reserve * ZONE2_LB
     print("Zone 1:", round(zone1_low, 2), "to", round(zone1_high, 2), "bpm")
 
     # compute zone2
-    zone2_low = restHR+reserve * ZONE2_LB + LB_TO_HB
-    zone2_high = restHR+reserve * ZONE3_LB
+    zone2_low = restHR + reserve * ZONE2_LB + LB_TO_HB
+    zone2_high = restHR + reserve * ZONE3_LB
     print("Zone 2:", round(zone2_low, 2), "to", round(zone2_high, 2), "bpm")
 
     # compute zone3
-    zone3_low = restHR+reserve * ZONE3_LB + LB_TO_HB
-    zone3_high = restHR+reserve * ZONE4_LB
+    zone3_low = restHR + reserve * ZONE3_LB + LB_TO_HB
+    zone3_high = restHR + reserve * ZONE4_LB
     print("Zone 3:", round(zone3_low, 2), "to", round(zone3_high, 2), "bpm")
 
     # compute zone4
