@@ -30,11 +30,13 @@ def ave_noon_temp(noon_temp):
 
 # convert the temperature from Fahrenheit to Celsius
 def convert_temp(highest_temp):
+    BASE = 32
+    CONVERSION_FACTOR = 1.8
     max_high_temp = highest_temp[0]
     for i in highest_temp:
         if i > max_high_temp:
             max_high_temp = i
-    c_temp = (max_high_temp - 32) / 1.8
+    c_temp = (max_high_temp - BASE) / CONVERSION_FACTOR
     print("The highest temperature predicted for the 10 day forecast is", max_high_temp, "Fahrenheit.", end=" ")
     print("It is converted to", c_temp, "Celsius")
 
