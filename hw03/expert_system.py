@@ -1,7 +1,7 @@
 
 
 def main():
-
+    # cough or not
     def are_you_cough():
         if_cough = input("Are you coughing? (y or n)")
         if if_cough == 'y':
@@ -9,6 +9,7 @@ def main():
         elif if_cough == 'n':
             have_headache(False)
 
+    # short of breath
     def short_of_breath():
         if_short_of_breath = input("Are you short of breath or \
 wheezing or coughing up phlegm? (y or n)")
@@ -17,8 +18,8 @@ wheezing or coughing up phlegm? (y or n)")
         elif if_short_of_breath == "n":
             have_headache(True)
 
+    # headache: 2 conditions
     def have_headache(is_cough=True):
-
         if_headache = input("Do you have a headache? (y or n)")
         if not is_cough:
             if if_headache == 'y':
@@ -31,6 +32,7 @@ wheezing or coughing up phlegm? (y or n)")
             elif if_headache == 'n':
                 aching_bone()
 
+    # aching bone
     def aching_bone():
         if_aching_bone = input("Do you have aching bones or \
 aching joints? (y or n)")
@@ -39,6 +41,7 @@ aching joints? (y or n)")
         elif if_aching_bone == 'n':
             have_rash()
 
+    # rash or not
     def have_rash():
         if_have_rash = input("Do you have a rash? (y or n)")
         if if_have_rash == 'y':
@@ -46,6 +49,7 @@ aching joints? (y or n)")
         elif if_have_rash == 'n':
             have_sore_throat()
 
+    # sore throat or not
     def have_sore_throat():
         if_sore_throat = input("Do you have a sore throat? (y or n)")
         if if_sore_throat == 'y':
@@ -53,6 +57,7 @@ aching joints? (y or n)")
         elif if_sore_throat == 'n':
             have_back_pain()
 
+    # back pain or not
     def have_back_pain():
         if_back_pain = input("Do you have back pain just above \
 the waist with chills and fever? (y or n)")
@@ -61,6 +66,7 @@ the waist with chills and fever? (y or n)")
         elif if_back_pain == 'n':
             pain_urinating()
 
+    # pain urinating
     def pain_urinating():
         if_pain_urinating = input("Do you have pain urinating or\
  are urinating more often? (y or n)")
@@ -69,6 +75,7 @@ the waist with chills and fever? (y or n)")
         elif if_pain_urinating == 'n':
             spend_in_sun()
 
+    # in sun
     def spend_in_sun():
         if_spend_sun = input("Have you spent the day in the \
 sun or in hot conditions? (y or n)")
@@ -77,6 +84,7 @@ sun or in hot conditions? (y or n)")
         elif if_spend_sun == 'n':
             print("Insufficient information to list possibilities.")
 
+    # experience many things
     def experience_follow():
         if_expe_follow = input("Are are experiencing any of the following\
 :pain when bending your head forward, nausea or vomiting, bright light hurting\
@@ -86,6 +94,7 @@ sun or in hot conditions? (y or n)")
         elif if_expe_follow == 'n':
             vomit()
 
+    # vomit or not
     def vomit():
         if_vomit = input("Are you vomiting or had diarrhea? (y or n)")
         if if_vomit == 'y':
