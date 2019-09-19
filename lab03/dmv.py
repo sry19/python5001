@@ -6,11 +6,11 @@ def main():
         # print some prompts
         print("Welcome to the DMV (estimated wait time is 3 hours)")
 
-        # input names and captilize 
+        # input names and capitalize 
         name = input("Please enter your first, middle, and last name:\n")
         first = name[:name.find(' ')]
-        last = name[name.rfind(' ')+1:]
-        middle = name[name.find(' ')+1: name.rfind(' ')]
+        last = name[name.rfind(' ') + 1:]
+        middle = name[name.find(' ') + 1: name.rfind(' ')]
         first, middle, last = first.capitalize(), middle.capitalize(), last.capitalize()
 
         # input valid DOB
