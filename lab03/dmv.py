@@ -17,11 +17,11 @@ def main():
 
         # input valid DOB
         month, day, year = input("Enter date of birth \
-            (MM/DD/YY):\n").split(sep='/')
+(MM/DD/YY):\n").split(sep='/')
         while int(month) < 1 or int(month) > 12 or \
                 int(day) < 1 or int(day) > 31:
             month, day, year = input("Enter valid date of \
-                birth (MM/DD/YY):\n").split(sep='/')
+birth (MM/DD/YY):\n").split(sep='/')
         print("-------------------------------------")
 
         # output
