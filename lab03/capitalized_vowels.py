@@ -14,9 +14,7 @@ def main():
                 new_x += i.lower()
         print(new_x)
 
-
     capitalized_vowels()
 
 
 main()
-

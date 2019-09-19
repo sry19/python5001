@@ -1,0 +1,52 @@
+4.14 Exercises
+
+1.True, False
+
+2. The term Boolean comes from the name of the British mathematician George Boole. A branch of discrete mathematics called Boolean algebra is dedicated
+to the study of the properties and the manipulation of logical expressions. (from the book)
+
+3.any integer except zero
+
+4.zero
+
+5. True
+
+6.(a)True
+(b)True
+(c)False
+(d)True
+(e)False
+(f)True
+(g)True
+(h)False
+(i)False
+(j)True
+(k)True
+(l)False
+
+7.(a)True
+(b)False
+(c)False
+(d)True
+(e)False
+(f)True
+(g)False
+(h)True
+(i)True
+(j)True
+(k)False
+(l)True
+(m)False
+(n)True
+(o)True
+(p)True
+(q)False
+(r)True
+(s)False
+(t)True
+(u)True
+(v)False
+(w)False
+(x)True
+(y)True
+(z)False

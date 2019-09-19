@@ -1,5 +1,6 @@
 from random import randint
 
+
 def main():
 
     def guess_number():
@@ -8,16 +9,16 @@ def main():
         secret_number = randint(1, 50)
         print('''Welcome to the Guessing Game!
 I picked a number between 1 and 50. Try and guess!''')
-        
+
         # first guess
         guess_nb = int(input())
-        print ("You guessed", guess_nb)
+        print("You guessed", guess_nb)
         count = 1
 
         # when guess is wrong
         while guess_nb != secret_number:
             diffe = abs(guess_nb - secret_number)
-            print("Your guess is ", end = '')
+            print("Your guess is ", end='')
             if diffe <= 1:
                 print("scalding hot")
             elif diffe <= 2:
@@ -38,12 +39,11 @@ I picked a number between 1 and 50. Try and guess!''')
             count += 1
 
         # print when succeed
-        print("Congratulations. You figured it out in", count, end = ' ')
+        print("Congratulations. You figured it out in", count, end=' ')
         if count == 1:
             print("try")
         else:
             print("tries")
-        
         # use count to judge the performances
         if count == 1:
             print("That was lucky!")
@@ -56,9 +56,8 @@ I picked a number between 1 and 50. Try and guess!''')
         elif 8 <= count <= 9:
             print("This is not your game.")
         elif count >= 10:
-            print("You are the worst guesser I've ever seen.") 
+            print("You are the worst guesser I've ever seen.")
 
-        
     guess_number()
 
 
