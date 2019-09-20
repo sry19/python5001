@@ -1,9 +1,7 @@
 from random import randint
 
 
-def main():
-
-    def guess_number():
+def guess_number():
 
         # produce secret number
         secret_number = randint(1, 50)
@@ -57,6 +55,9 @@ I picked a number between 1 and 50. Try and guess!''')
             print("This is not your game.")
         elif count >= 10:
             print("You are the worst guesser I've ever seen.")
+
+
+def main():
 
     guess_number()
 

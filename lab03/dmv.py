@@ -1,9 +1,7 @@
 import random
 
 
-def main():
-
-    def dmv():
+def dmv():
         # print some prompts
         print("Welcome to the DMV (estimated wait time is 3 hours)")
 
@@ -32,6 +30,9 @@ birth (MM/DD/YY):\n").split(sep='/')
         print("DOB", month + '/' + day + '/' + year)
         print("EXP", month + '/' + day + '/21')
         print("-------------------------------------")
+
+
+def main():
 
     dmv()
 
