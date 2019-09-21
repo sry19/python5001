@@ -1,4 +1,15 @@
-import random
+from random import randint
+
+MAX_SEVEN_DIGIT = 9999999
+MIN_VAL = 0
+NUM_OF_DIGIT = 7
+MAX_MONTH = 12
+MAX_DAY = 31
+
+
+def produce_random():
+        n = str(randint(MIN_VAL, MAX_SEVEN_DIGIT))
+        return '0000000'[:NUM_OF_DIGIT - len(n)] + n
 
 
 def dmv():
@@ -16,15 +27,15 @@ def dmv():
         # input valid DOB
         month, day, year = input("Enter date of birth \
 (MM/DD/YY):\n").split(sep='/')
-        while int(month) < 1 or int(month) > 12 or \
-                int(day) < 1 or int(day) > 31:
-            month, day, year = input("Enter valid date of \
+        while int(month) < 1 or int(month) > MAX_MONTH or \
+                int(day) < 1 or int(day) > MAX_DAY:
+                month, day, year = input("Enter valid date of \
 birth (MM/DD/YY):\n").split(sep='/')
         print("-------------------------------------")
 
         # output
         print("Washington Driver License")
-        print("DL", random.randint(1000000, 9999999))
+        print("DL", produce_random())
         print("LN", last)
         print("FN", first, middle)
         print("DOB", month + '/' + day + '/' + year)
@@ -34,7 +45,7 @@ birth (MM/DD/YY):\n").split(sep='/')
 
 def main():
 
-    dmv()
+        dmv()
 
 
 main()
