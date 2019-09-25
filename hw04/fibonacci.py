@@ -1,8 +1,9 @@
+# compute first n fibonacci sequence
 import sys
 
 
 def main():
-    # compute first n fibonacci sequence
+    '''compute first n fibonacci sequence'''
     first_n_fibo = int(sys.argv[1])
     fibo_list = [0, 1]
     if first_n_fibo <= 2:

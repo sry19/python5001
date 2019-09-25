@@ -1,16 +1,15 @@
-# Ruoyun Sun: randomly produce username and 3 passwords
+# Ruoyun Sun: input first name, last name, a favourite word to randomly produce
+# username and 3 kinds of passwords
 from random import randint
 
 
-# input first name, last name, a favourite word to randomly produce username
-# and 3 passwords
 def main():
     ''' input first name, last name, a favourite word to randomly produce
         user_name and 3 passwords'''
     print("Welcome to the username and password generator!")
-    first_name = input("Please enter your first name: ")
-    last_name = input("Please enter your last name: ")
-    fav_words = input("Please enter your favorite word: ")
+    first_name = input("Please enter your first name: ").capitalize()
+    last_name = input("Please enter your last name: ").capitalize()
+    fav_words = input("Please enter your favorite word: ").capitalize()
     print()
 
     # The username generated consists of the first letter from the user's first
