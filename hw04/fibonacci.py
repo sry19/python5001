@@ -10,7 +10,7 @@ def main():
         return
     first_num = 0
     second_num = 1
-    for i in range(2, first_n_fibo):
+    for _ in range(2, first_n_fibo):
         first_num, second_num = second_num, first_num + second_num
         fibo_list.append(second_num)
     print(fibo_list)
