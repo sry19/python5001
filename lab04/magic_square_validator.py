@@ -9,9 +9,12 @@ used_list = []
 
 def no_duplicate(one_line):
     '''given one line, check if the digits have already been used before
-    or same number appears in the same line more than once'''
+    or same number appears in the same line more than once. also check
+    if 1 <= digit <= 9'''
     this_line = []
     for num in one_line:
+        if int(num) > 9 or int(num) <= 0:
+            return False
         if int(num) in used_list:
             return False
         if int(num) in this_line:
