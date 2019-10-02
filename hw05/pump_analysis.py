@@ -1,3 +1,6 @@
+# Author: Ruoyun Sun
+# user input a filename and the program analyzes the data in that file
+
 MINUTE_PER_HOUR = 60
 HOUR_PER_DAY = 24
 FLOW_RATE = 2
