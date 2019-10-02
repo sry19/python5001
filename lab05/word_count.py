@@ -1,7 +1,16 @@
+# Author: Ruoyun Sun
+# The program prompts the user for a file name, then prints out counts of
+# words, non-whitespace characters (including punctuation), and alphanumeric
+# characters (letters and numbers, excluding punctuation)
 import re
 
 
 def main():
+    '''prompts the user for a file name, then prints out counts of words,
+        non-whitespace characters (including punctuation), and alphanumeric
+        characters (letters and numbers, excluding punctuation)
+        None -> None'''
+
     # prompts the user for a file name
     filename = input("Enter the file name: ")
     try:
