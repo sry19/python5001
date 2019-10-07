@@ -9,6 +9,7 @@ SET_100_GALLONS = 100
 KW_INTO_WATT = 1000
 RUNNING_JUDGE = 500
 STANDARD_POWER_PER_MIN = 1000
+RUNTIME_AT_LEAST = 120
 
 
 def main():
@@ -61,6 +62,34 @@ def main():
     time_100 = time_certain_quantity(SET_100_GALLONS, lst_data)
     print("It took", time_5, "minutes of data to reach 5 gallons.")
     print("It took", time_100, "minutes of data to reach 100 gallons.")
+    print()
+
+    # look through the data file for times when the pump runs for at least
+    # 120 minutes in a row, and report when the long run started and how
+    # long it lasted.
+    i = 0
+    has_sth = False
+    while i < len(lst_data):
+        if lst_data[i] > RUNNING_JUDGE:
+            start_point = i + 1
+            while i < len(lst_data):
+                if lst_data[i] > RUNNING_JUDGE:
+                    i += 1
+                else:
+                    if i + 1 - start_point >= RUNTIME_AT_LEAST:
+                        time_last = i + 1 - start_point
+                        if not has_sth:
+                            print("Information on water softener recharges:")
+                            has_sth = True
+                        print(time_last, "minute run started at", start_point)
+                    break
+            if i == len(lst_data) and i + 1 - start_point >= RUNTIME_AT_LEAST:
+                time_last = i + 1 - start_point
+                if not has_sth:
+                    print("Information on water softener recharges:")
+                    has_sth = True
+                print(time_last, "minute run started at", start_point)
+        i += 1
 
 
 def time_certain_quantity(set_quantity, lst_data):
