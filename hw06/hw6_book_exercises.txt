@@ -1,0 +1,14 @@
+1.legal. The Python interpreter will ignore(or cover) the first function, so the answer 
+    is 11. Python interprets the program from top to bottom.
+2.legal. The function will execute twice.
+3.legal.It will print 7.
+4.legal. It will print 26 because the function returns 26.
+5. not legal. proc() missing 1 required positional argument: 'y'
+6.not legal. proc() takes 1 positional argument but 2 were given
+7.legal. It will print 50.
+8.It prints 10. num does not change, it is only a parameter passing into the function.
+9.legal .They are both local variables, they are valid only in their functions
+     and do not influence each other.
+10.legal. In the main function, 'y' is a value that passes to the 'proc()'.
+     'x' is a parameter that receives the value passed in. They can be 
+     different or the same and it will not influence the result.
