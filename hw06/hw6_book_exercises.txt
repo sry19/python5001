@@ -7,7 +7,7 @@
 6.not legal. proc() takes 1 positional argument but 2 were given
 7.legal. It will print 50.
 8.It prints 10. num does not change, it is only a parameter passing into the function.
-9.legal .They are both local variables, they are valid only in their functions
+9.legal .They are both local variables, they are valid only in their own functions
      and do not influence each other.
 10.legal. In the main function, 'y' is a value that passes to the 'proc()'.
      'x' is a parameter that receives the value passed in. They can be 
