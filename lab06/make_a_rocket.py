@@ -37,9 +37,9 @@ def draw_rocket(width, square_num, isstriped):
 def build_nose_cone(width):
     '''build nose cone using width
         integer -> None'''
-    row = (width - 1) // 2
+    row = width // 2
     for i in range(row):
-        space_wid = (width - 1) // 2 - i
+        space_wid = width // 2 - i
         print(' ' * space_wid, '*' * (width-2*space_wid), sep='')
 
 
