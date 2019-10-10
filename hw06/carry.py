@@ -8,7 +8,11 @@ def main():
     '''input 2 numbers and print their addition result and number of carries
         None -> None'''
     fir_num = input("Enter the first number: ")
+    while not fir_num.isnumeric():
+        fir_num = input("Enter the first number(must be an integer): ")
     sec_num = input("Enter the second number: ")
+    while not sec_num.isnumeric():
+        sec_num = input("Enter the second number(must be an integer): ")
     count_carry, res_str = add_str(fir_num, sec_num)
     print(fir_num, '+', sec_num, '=', res_str)
     print("Number of carries:", count_carry)
