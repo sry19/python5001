@@ -19,21 +19,23 @@ def main():
         None -> None'''
     turtle.hideturtle()
     radius = STAR_SEG / 2 / COS_18_DEGREE
-    draw_circle(radius)
-    draw_star(STAR_SEG)
+    circle_x, circle_y = 0, -radius
+    draw_circle(radius, circle_x, circle_y)
+    star_x, star_y = -STAR_SEG / 2, STAR_SEG / 2 * TAN_18_DEGREE
+    draw_star(STAR_SEG, star_x, star_y)
     turtle.exitonclick()
 
 
-def draw_circle(radius):
+def draw_circle(radius, circle_x, circle_y):
     '''use the radius to draw a circle
-        number -> None'''
+        radius, x, y -> None'''
     CIRCLE_LINE_COLOR = "blue"
     CIRCLE_FILL_COLOR = "cyan"
     ACCURACY = 400
 
     turtle.color(CIRCLE_LINE_COLOR, CIRCLE_FILL_COLOR)
     turtle.penup()
-    turtle.setposition(0, -radius)
+    turtle.setposition(circle_x, circle_y)
     turtle.pendown()
     turtle.begin_fill()
     # To simplify, we can use 'turtle.circle(radius)'
@@ -52,15 +54,15 @@ def circle(radius, angle, step):
         turtle.forward(distance)
 
 
-def draw_star(star_seg):
+def draw_star(star_seg, star_x, star_y):
     '''use the star's segments to draw a star
-        integer -> None'''
+        size, x, y -> None'''
     STAR_LINE_COLOR = 'red'
     STAR_FILL_COLOR = "yellow"
 
     turtle.pencolor(STAR_LINE_COLOR)
     turtle.penup()
-    turtle.setposition(-star_seg / 2, star_seg / 2 * TAN_18_DEGREE)
+    turtle.setposition(star_x, star_y)
     turtle.pendown()
     turtle.fillcolor(STAR_FILL_COLOR)
     turtle.begin_fill()
