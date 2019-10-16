@@ -53,9 +53,17 @@ def do_set_team_name(team):
 def check_team_name(team_name):
     '''check if the team name only has number, letter or whitespace
             string -> Boolean'''
+    START_UPPER = 'A'
+    END_UPPER = 'Z'
+    START_LOWER = 'a'
+    END_LOWER = 'z'
+    START_NUM = '0'
+    END_NUM = '9'
+
     for letter in team_name:
-        if (letter == ' ' or '0' <= letter <= '9' or 'a' <= letter <= 'z' or
-           'A' <= letter <= 'Z'):
+        if (letter == ' ' or START_NUM <= letter <= END_NUM or
+           START_LOWER <= letter <= END_LOWER or
+           START_UPPER <= letter <= END_UPPER):
             continue
         else:
             return False

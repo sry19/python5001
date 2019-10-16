@@ -45,6 +45,7 @@ class Team:
             print("The team currently has no players")
             return
         for player in self.players:
-            print("{0:<4}  {1:<15}  {2:<11}".format(player.number,
+            print("{0:<4}  {1:<15}  {2:<11}".format(
+                                                    player.number,
                                                     player.name,
                                                     player.position))
