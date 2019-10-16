@@ -74,7 +74,9 @@ class GameController:
                 self.lets_play()
 
     def you_lose(self, curr_val):
+        '''print lose mesage'''
         print("You rolled " + str(curr_val) + ". You lose!")
 
     def you_win(self, curr_val):
+        '''print win message'''
         print("You rolled " + str(curr_val) + ". You win!")

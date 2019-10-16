@@ -1,3 +1,5 @@
+# Author: Ruoyun Sun
+# The program creates a dice game
 from game_controller import GameController
 
 
