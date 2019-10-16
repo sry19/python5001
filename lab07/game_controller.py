@@ -1,6 +1,6 @@
 from pair_of_dice import PairOfDice
 
-INIT = 0
+INIT_NUM = 0
 FIR_ROUND_LOSE_VALS = [2, 3, 12]
 FIR_ROUND_WIN_VALS = [7, 11]
 LOSE_VAL = 7
@@ -11,9 +11,9 @@ class GameController:
     def __init__(self):
         '''constructs a gamecontroller which record the point, current value
             and two dice'''
-        self.my_point = INIT
+        self.my_point = INIT_NUM
         self.my_two_dice = PairOfDice()
-        self.this_round = INIT
+        self.this_round = INIT_NUM
 
     def roll_dice(self):
         '''roll two dice every round
@@ -55,7 +55,7 @@ class GameController:
         print("Press enter to roll the dice...")
         self.roll_dice()
         input()
-        if self.my_point == INIT:
+        if self.my_point == INIT_NUM:
             if self.check_fir_round_true():
                 self.you_win(self.this_round)
             elif not self.check_fir_round_false():
