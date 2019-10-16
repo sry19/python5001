@@ -1,16 +1,15 @@
+# Author: Ruoyun Sun
+# The program manages teams. The system enables the user to set the name of
+# the team, check on the status of the team, and to manage the players on the
+# team in various ways.
 from team import Team
 from bench import Bench
 
 
 def main():
+    '''manage the input
+        None -> None'''
     print("Welcome to the team manager.")
-    # Here's where we create objects for the team and the bench. These
-    # objects will be able to call the methods we've defined in their
-    # respective classes. When the constructor functions are called here,
-    # the classes' __init__() method is called with these values
-    # passed to it. In both of these cases no arguments are passed, here.
-    # However, the `self` argument is always implicitly passed with any
-    # method call.
     the_team = Team()
     the_bench = Bench()
 
@@ -35,21 +34,16 @@ def main():
         elif command == "get player from bench":
             do_get_player_from_bench(the_bench)
         elif command == "cut player":
-            # TODO: call a function that calls
-            # the appropriate method on the team
-            # object to cut the player (you need
-            # to write the function below)
             do_cut_player(the_team, the_bench)
         elif command == "show bench":
-            # TODO: call a function to call the necessary
-            # bench method to show the names of the players
-            # who are currently on the bench.
             do_show_bench(the_bench)
         else:
             do_not_understand()
 
 
 def do_set_team_name(team):
+    '''give a name to the team
+        team object -> None'''
     name = input("What do you want to name the team?\n")
     while not check_team_name(name):
         name = input("What do you want to name the team?\n")
@@ -57,6 +51,8 @@ def do_set_team_name(team):
 
 
 def check_team_name(team_name):
+    '''check if the team name only has number, letter or whitespace
+            string -> Boolean'''
     for letter in team_name:
         if (letter == ' ' or '0' <= letter <= '9' or 'a' <= letter <= 'z' or
            'A' <= letter <= 'Z'):
@@ -67,19 +63,16 @@ def check_team_name(team_name):
 
 
 def do_show_team_roster(team):
-    # TODO: call the method on the team object that
-    # displays the roster
+    '''displays the team roster
+        team object -> None'''
     team.show_team_member()
 
 
 def do_check_position_filled(team):
+    '''call the method on the team object that determines
+        whether a given position has at least one player filling it
+        team object -> None'''
     position = input("What position are you checking for?\n")
-    # TODO: call the method on the team object that determines
-    # whether a given position has at least one player filling it,
-    # then print the appropriate message:
-    # "Yes, the", position, "position is filled"
-    # or
-    # "No, the", position, "position is not filled"
     position = position.lower()
     while position not in ["catcher", "corner", "sniper", "thrower"]:
         position = input("What position are you checking for?\n")
@@ -91,6 +84,8 @@ def do_check_position_filled(team):
 
 
 def do_add_player_to_team(team):
+    '''use name, number and position to add a new player to team
+        team object -> None'''
     player_name = input("What's the player's name?\n")
     player_number = input("What's " + player_name + "'s number?\n")
     while not player_number.isnumeric():
@@ -100,20 +95,15 @@ def do_add_player_to_team(team):
     while player_position not in ["catcher", "corner", "sniper", "thrower"]:
         player_position = input("What's " + player_name + "'s position?\n")
         player_position = player_position.lower()
-    # TODO: call the method on team that creates a new player and
-    # adds the player to the team.
     team.add_player(player_name, player_number, player_position)
     print("Added", player_name, "to", team.name)
 
 
 def do_send_player_to_bench(team, bench):
+    '''if a player is in the team, we can send it to the bench, else
+            print 'XX isn't on the team'
+            team object, bench object -> None'''
     name = input("Who do you want to send to the bench?\n")
-    # TODO: make sure that the player is actually on the team first,
-    # and then call a method on the bench object to place the player
-    # "on the bench". If this is accomplished successfully, print
-    # "Sent", name, "to bench."
-    # otherwise print
-    # name, "isn't on the team."
     for player in team.players:
         if player.name == name:
             bench.send_to_bench(name)
@@ -123,32 +113,31 @@ def do_send_player_to_bench(team, bench):
 
 
 def do_get_player_from_bench(bench):
-    # TODO: get the best-rested player by name from the bench
-    # (i.e. the player who has been on the bench longest). Print to
-    # the screen the name of the player who was retrieved from the
-    # bench. If the bench is empty, print to the screen that the
-    # bench is empty.
+    '''get and delete a player in the bench(FIFO), then print his name
+            bench object -> None'''
     if not bench.players_on_bench:
         print("The bench is empty.")
     else:
         print("Got", bench.get_from_bench(), "from bench")
 
 
-# TODO: write a function that calls the appropriate method on the team
-# object to cut the player
 def do_cut_player(team, bench):
+    '''cut a player from the team, also cut the player if he is on the bench
+        team object, bench object -> None'''
     player_name = input("Who do you want to cut?\n")
     team.cut_player(player_name)
     bench.remove_from_bench(player_name)
 
 
-# TODO: write a function to call the necessary method to show the
-# names of the players who are currently on the bench.
 def do_show_bench(bench):
+    '''show players on the bench
+        bench object -> None'''
     bench.display_bench()
 
 
 def do_not_understand():
+    '''when input is meaningless
+            None -> None'''
     print("I didn't understand that command")
 
 
