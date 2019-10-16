@@ -1,14 +1,19 @@
 from pair_of_dice import PairOfDice
 
+INIT = 0
+FIR_ROUND_LOSE_VALS = [2, 3, 12]
+FIR_ROUND_WIN_VALS = [7, 11]
+LOSE_VAL = 7
+
 
 class GameController:
     '''A class representing a game controller'''
     def __init__(self):
         '''constructs a gamecontroller which record the point, current value
             and two dice'''
-        self.my_point = 0
+        self.my_point = INIT
         self.my_two_dice = PairOfDice()
-        self.this_round = 0
+        self.this_round = INIT
 
     def roll_dice(self):
         '''roll two dice every round
@@ -17,24 +22,23 @@ class GameController:
         self.this_round = self.my_two_dice.current_value()
 
     def check_fir_round_true(self):
-        '''If user rolls 7 or 11 on first roll, user wins
+        '''If user rolls FIR_ROUND_WIN_VALS on first roll, user wins
             GameController object -> Boolean'''
-        if self.this_round == 7 or self.this_round == 11:
+        if self.this_round in FIR_ROUND_WIN_VALS:
             return True
         return False
 
     def check_fir_round_false(self):
-        ''' If user rolls 2, 3, or 12 on first role, user loses
+        ''' If user rolls FIR_ROUND_LOSE_VALS on first role, user loses
             GameController object -> Boolean'''
-        if (self.this_round == 2 or self.this_round == 3 or
-                self.this_round == 12):
+        if self.this_round in FIR_ROUND_LOSE_VALS:
             return False
         return True
 
     def check_ts_round_false(self):
-        '''If user rolls 7, user loses
+        '''If user rolls LOSE_VAL, user loses
             GameController object -> Boolean'''
-        if self.this_round == 7:
+        if self.this_round == LOSE_VAL:
             return False
         return True
 
@@ -51,20 +55,26 @@ class GameController:
         print("Press enter to roll the dice...")
         self.roll_dice()
         input()
-        if self.my_point == 0:
+        if self.my_point == INIT:
             if self.check_fir_round_true():
-                print("You rolled " + str(self.this_round) + ". You win!")
+                self.you_win(self.this_round)
             elif not self.check_fir_round_false():
-                print("You rolled " + str(self.this_round) + ". You lose!")
+                self.you_lose(self.this_round)
             else:
                 self.my_point = self.this_round
                 print("Your point is", self.my_point)
                 self.lets_play()
         else:
             if self.check_ts_round_true():
-                print("You rolled " + str(self.this_round) + ". You win!")
+                self.you_win(self.this_round)
             elif not self.check_ts_round_false():
-                print("You rolled " + str(self.this_round) + ". You lose!")
+                self.you_lose(self.this_round)
             else:
                 print("You rolled " + str(self.this_round) + '.')
                 self.lets_play()
+
+    def you_lose(self, curr_val):
+        print("You rolled " + str(curr_val) + ". You lose!")
+
+    def you_win(self, curr_val):
+        print("You rolled " + str(curr_val) + ". You win!")
