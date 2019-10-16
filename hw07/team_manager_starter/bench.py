@@ -3,6 +3,7 @@
 class Bench:
     """A class representing a sidelines bench"""
     def __init__(self):
+        '''construct a bench which has players' list on the bench'''
         self.players_on_bench = []
 
     def send_to_bench(self, player_name):

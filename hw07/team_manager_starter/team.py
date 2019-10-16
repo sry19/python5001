@@ -4,6 +4,7 @@ from player import Player
 class Team:
     """A class representing a dodgeball team"""
     def __init__(self):
+        '''contruct a team which has name and player list'''
         self.name = "Anonymous Team"
         self.players = []
 
