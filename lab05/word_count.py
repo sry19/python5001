@@ -15,7 +15,7 @@ def main():
     filename = input("Enter the file name: ")
     try:
         f = open(filename, "r")
-    except:
+    except Exception:
         print("Can't open", filename)
         return
     count_word, count_chr, count_alnum = 0, 0, 0

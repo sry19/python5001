@@ -51,7 +51,19 @@ def main():
 
 def do_set_team_name(team):
     name = input("What do you want to name the team?\n")
+    while not check_team_name(name):
+        name = input("What do you want to name the team?\n")
     team.set_team_name(name)
+
+
+def check_team_name(team_name):
+    for letter in team_name:
+        if (letter == ' ' or '0' <= letter <= '9' or 'a' <= letter <= 'z' or
+           'A' <= letter <= 'Z'):
+            continue
+        else:
+            return False
+    return True
 
 
 def do_show_team_roster(team):
@@ -68,6 +80,10 @@ def do_check_position_filled(team):
     # "Yes, the", position, "position is filled"
     # or
     # "No, the", position, "position is not filled"
+    position = position.lower()
+    while position not in ["catcher", "corner", "sniper", "thrower"]:
+        position = input("What position are you checking for?\n")
+        position = position.lower()
     if team.is_position_filled(position):
         print("Yes, the", position, "position is filled")
     else:
@@ -77,7 +93,13 @@ def do_check_position_filled(team):
 def do_add_player_to_team(team):
     player_name = input("What's the player's name?\n")
     player_number = input("What's " + player_name + "'s number?\n")
+    while not player_number.isnumeric():
+        player_number = input("What's " + player_name + "'s number?\n")
     player_position = input("What's " + player_name + "'s position?\n")
+    player_position = player_position.lower()
+    while player_position not in ["catcher", "corner", "sniper", "thrower"]:
+        player_position = input("What's " + player_name + "'s position?\n")
+        player_position = player_position.lower()
     # TODO: call the method on team that creates a new player and
     # adds the player to the team.
     team.add_player(player_name, player_number, player_position)
