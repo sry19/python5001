@@ -4,12 +4,13 @@ import sys
 
 def main(file_name):
     try:
-        f = open(sys.argv[1])
+        f = open(file_name)
     except FileNotFoundError:
         print(file_name, 'is not found')
         return
     tc = TextCleaner()
     for line in f:
+        line = tc.pre_process(line)
         for sentence in line.split('.'):
             tc.separate_sentences(sentence)
     tc.count_uni_word()
