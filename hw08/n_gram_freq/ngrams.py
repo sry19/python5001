@@ -10,7 +10,7 @@ def main(file_name):
         return
     tc = TextCleaner()
     for line in f:
-        line = tc.pre_process(line)
+        line = tc.pre_process(line.strip())
         for sentence in line.split('.'):
             tc.separate_sentences(sentence)
     tc.count_uni_word()

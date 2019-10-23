@@ -1,7 +1,15 @@
 from frequencies import NgramFrequencies
 
 
+def test_constructor():
+    '''tests __init__'''
+    nf = NgramFrequencies()
+    assert nf.n_gram_dict == {}
+    assert nf.total_val == 0
+
+
 def test_add_item():
+    '''tests add_item'''
     nf = NgramFrequencies()
     word = ''
     nf.add_item(word)
@@ -25,6 +33,7 @@ def test_add_item():
 
 
 def test_top_n_counts():
+    '''tests top_n_counts'''
     nf = NgramFrequencies()
     nf.add_item('apple')
     nf.add_item('apple')
@@ -37,6 +46,7 @@ def test_top_n_counts():
 
 
 def test_top_n_freqs():
+    '''tests top_n_freqs'''
     nf = NgramFrequencies()
     nf.add_item('apple')
     nf.add_item('apple')
@@ -50,6 +60,7 @@ def test_top_n_freqs():
 
 
 def test_frequency():
+    '''tests frequency'''
     nf = NgramFrequencies()
     nf.add_item('apple')
     nf.add_item('apple')

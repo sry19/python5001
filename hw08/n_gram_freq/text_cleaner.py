@@ -5,12 +5,15 @@ N = 10
 
 class TextCleaner:
     def __init__(self):
+        '''constructs the TextCleaner'''
         self.word_lst = []
         self.nf_uni = NgramFrequencies()
         self.nf_bi = NgramFrequencies()
         self.nf_tri = NgramFrequencies()
 
     def pre_process(self, file_content):
+        '''pre-processes the string
+            string --> string'''
         # file_content = re.sub(r"[A-Z][a-z]\.", '', file_content,
         #                       count=0, flags=0)
         file_content = re.sub("Dr.", "Dr", file_content,
@@ -20,9 +23,11 @@ class TextCleaner:
         return file_content
 
     def separate_sentences(self, file_content):
+        '''generates word list
+            string --> None'''
         file_content = re.sub(r"[()[\]{}:\-\"]", '', file_content,
                               count=0, flags=0)
-        new_content = file_content.rstrip().lower().replace(',', ' COMMA')
+        new_content = file_content.strip().lower().replace(',', ' COMMA')
         file_content_lst = new_content.split(' ')
         for i in file_content_lst:
             if i == '':
@@ -30,6 +35,7 @@ class TextCleaner:
         self.word_lst.append(file_content_lst)
 
     def count_uni_word(self):
+        '''counts unigrams'''
         for word_lst in self.word_lst:
             for word in word_lst:
                 self.nf_uni.add_item(word)
@@ -39,7 +45,7 @@ class TextCleaner:
 
     def count_bi_word(self):
         for word_lst in self.word_lst:
-            for idx in range(len(word_lst)-1):
+            for idx in range(len(word_lst) - 1):
                 self.nf_bi.add_item(word_lst[idx] + '_' + word_lst[idx + 1])
         print("Top", N, "bigrams:")
         for pair in self.nf_bi.top_n_freqs(N):

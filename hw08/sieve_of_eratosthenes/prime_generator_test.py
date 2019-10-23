@@ -1,6 +1,13 @@
 from prime_generator import PrimeGenerator
 
 
+def test_constructor():
+    '''tests __init__'''
+    pg = PrimeGenerator()
+    assert pg.compos_set == set()
+    assert pg.prime_lst == []
+
+
 def test_primes_to_max():
     '''tests primes_to_max'''
     pg = PrimeGenerator()
