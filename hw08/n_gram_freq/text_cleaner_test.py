@@ -4,18 +4,17 @@ from text_cleaner import TextCleaner
 def test_pre_process():
     tc = TextCleaner()
     file_content = "Directed by Mr. Burton and Mike Johnson."
-    assert tc.pre_process(file_content) == '''Directed by Mr Burton and Mi
+    assert tc.pre_process(file_content) == '''Directed by Mr Burton and Mi\
 ke Johnson.'''
 
 
 def test_separate_sentences():
     tc = TextCleaner()
-    file_content = '''A necro- philiac entertainment for the whole family to e
+    file_content = '''A necro- philiac entertainment for the whole family to e\
 njoy, '''
-    assert tc.separate_sentences(file_content) == '''a necro philiac enterta
-inment for the whole family to enjoy COMMA'''
-    tc.word_lst = [['a', 'necro', 'philiac', 'entertainment', 'for', 'the',
-                    'whole', 'family', 'to', 'enjoy', 'COMMA']]
+    tc.separate_sentences(file_content)
+    assert tc.word_lst == [['a', 'necro', 'philiac', 'entertainment', 'for',
+                            'the', 'whole', 'family', 'to', 'enjoy', 'COMMA']]
 
 
 def test_count_uni_word():
@@ -23,10 +22,12 @@ def test_count_uni_word():
     tc.word_lst = [['a', 'necro', 'philiac', 'entertainment', 'for', 'the',
                     'whole', 'family', 'to', 'enjoy', 'COMMA']]
     tc.count_uni_word()
-    assert tc.nf_uni.n_gram_dict == {'a': 1, 'necro': 1, 'philiac': 1,
-                                     'entertainment': 1, 'for': 1, 'the': 1,
-                                     'whole': 1, 'family': 1, 'to': 1,
-                                     'enjoy': 1, 'COMMA': 1}
+    assert tc.nf_uni.n_gram_dict == {'a': 0.091, 'necro': 0.091,
+                                     'philiac': 0.091, 'entertainment': 0.091,
+                                     'for': 0.091, 'the': 0.091,
+                                     'whole': 0.091, 'family': 0.091,
+                                     'to': 0.091, 'enjoy': 0.091,
+                                     'COMMA': 0.091}
     assert tc.nf_uni.total_val == 11
 
 
@@ -35,12 +36,12 @@ def test_count_bi_word():
     tc.word_lst = [['a', 'necro', 'philiac', 'entertainment', 'for', 'the',
                     'whole', 'family', 'to', 'enjoy', 'COMMA']]
     tc.count_bi_word()
-    assert tc.nf_bi.n_gram_dict == {'a_necro': 1, 'necro_philiac': 1,
-                                    'philiac_entertainment': 1,
-                                    'entertainment_for': 1, 'for_the': 1,
-                                    'the_whole': 1, 'whole_family': 1,
-                                    'family_to': 1, 'to_enjoy': 1,
-                                    'enjoy_COMMA': 1}
+    assert tc.nf_bi.n_gram_dict == {'a_necro': 0.1, 'necro_philiac': 0.1,
+                                    'philiac_entertainment': 0.1,
+                                    'entertainment_for': 0.1, 'for_the': 0.1,
+                                    'the_whole': 0.1, 'whole_family': 0.1,
+                                    'family_to': 0.1, 'to_enjoy': 0.1,
+                                    'enjoy_COMMA': 0.1}
     assert tc.nf_bi.total_val == 10
 
 
@@ -49,12 +50,14 @@ def test_count_tri_word():
     tc.word_lst = [['a', 'necro', 'philiac', 'entertainment', 'for', 'the',
                     'whole', 'family', 'to', 'enjoy', 'COMMA']]
     tc.count_tri_word()
-    assert tc.nf_tri.n_gram_dict == {'a_necro_philiac': 1,
-                                     'necro_philiac_entertainment': 1,
-                                     'philiac_entertainment_for': 1,
-                                     'entertainment_for_the': 1,
-                                     'for_the_whole': 1, 'the_whole_family': 1,
-                                     'whole_family_to': 1,
-                                     'family_to_enjoy': 1, 'to_enjoy_COMMA': 1
+    assert tc.nf_tri.n_gram_dict == {'a_necro_philiac': 0.111,
+                                     'necro_philiac_entertainment': 0.111,
+                                     'philiac_entertainment_for': 0.111,
+                                     'entertainment_for_the': 0.111,
+                                     'for_the_whole': 0.111,
+                                     'the_whole_family': 0.111,
+                                     'whole_family_to': 0.111,
+                                     'family_to_enjoy': 0.111,
+                                     'to_enjoy_COMMA': 0.111
                                      }
     assert tc.nf_tri.total_val == 9
