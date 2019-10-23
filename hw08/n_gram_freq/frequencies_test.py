@@ -25,12 +25,39 @@ def test_add_item():
 
 
 def test_top_n_counts():
-    pass
+    nf = NgramFrequencies()
+    nf.add_item('apple')
+    nf.add_item('apple')
+    nf.add_item('apple')
+    nf.add_item('orange')
+    nf.add_item('grape')
+    nf.add_item('meat')
+    nf.add_item('orange')
+    assert nf.top_n_counts(3) == [('apple', 3), ('orange', 2), ('grape', 1)]
 
 
 def test_top_n_freqs():
-    pass
+    nf = NgramFrequencies()
+    nf.add_item('apple')
+    nf.add_item('apple')
+    nf.add_item('apple')
+    nf.add_item('orange')
+    nf.add_item('grape')
+    nf.add_item('meat')
+    nf.add_item('orange')
+    assert nf.top_n_freqs(3) == [('apple', 0.429), ('orange', 0.286),
+                                 ('grape', 0.143)]
 
 
 def test_frequency():
-    pass
+    nf = NgramFrequencies()
+    nf.add_item('apple')
+    nf.add_item('apple')
+    nf.add_item('apple')
+    nf.add_item('orange')
+    nf.add_item('grape')
+    nf.add_item('meat')
+    nf.add_item('orange')
+    assert nf.frequency('apple') == 0.429
+    assert nf.frequency('orange') == 0.286
+    assert nf.frequency('grape') == 0.143
