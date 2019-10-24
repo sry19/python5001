@@ -14,6 +14,7 @@ def test_constructor():
 
 
 def test_pre_process():
+    '''tests pre_process'''
     tc = TextCleaner()
     file_content = "Directed by Mr. Burton and Mike Johnson."
     assert tc.pre_process(file_content) == '''Directed by Mr Burton and Mi\
@@ -21,6 +22,7 @@ ke Johnson.'''
 
 
 def test_separate_sentences():
+    '''tests separate_sentences'''
     tc = TextCleaner()
     file_content = '''A necro- philiac entertainment for the whole family to e\
 njoy, '''
@@ -30,6 +32,7 @@ njoy, '''
 
 
 def test_count_uni_word():
+    '''tests count_uni_word'''
     tc = TextCleaner()
     file_content = '''A necro- philiac entertainment for the whole family to e\
 njoy, '''
@@ -46,6 +49,7 @@ njoy, '''
 
 
 def test_count_bi_word():
+    '''tests count_bi_word'''
     tc = TextCleaner()
     file_content = '''A necro- philiac entertainment for the a necro family'''
     tc.separate_sentences(file_content)
@@ -63,6 +67,7 @@ def test_count_bi_word():
 
 
 def test_count_tri_word():
+    '''tests count_tri_word'''
     tc = TextCleaner()
     file_content = '''A necro- philiac entertainment for the whole family to e\
 njoy, '''

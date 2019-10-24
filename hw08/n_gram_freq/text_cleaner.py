@@ -39,6 +39,7 @@ class TextCleaner:
         return self.nf_uni.top_n_freqs(n)
 
     def print_out_uni(self, n):
+        '''prints top n unigrams'''
         print("Top", n, "unigrams:")
         for pair in self.count_uni_word(n):
             print("  ", pair)
@@ -51,6 +52,7 @@ class TextCleaner:
         return self.nf_bi.top_n_freqs(n)
 
     def print_out_bi(self, n):
+        '''prints top n bigrams'''
         print("Top", n, "bigrams:")
         for pair in self.count_bi_word(n):
             print("  ", pair)
@@ -65,6 +67,7 @@ class TextCleaner:
         return self.nf_tri.top_n_freqs(n)
 
     def print_out_tri(self, n):
+        '''prints top n trigrams'''
         print("Top", n, "trigrams:")
         for pair in self.count_tri_word(n):
             print("  ", pair)
