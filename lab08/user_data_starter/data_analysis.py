@@ -20,6 +20,7 @@ class DataAnalysis:
         self.count_data(f)
 
     def count_data(self, f):
+        '''counts language and 2-letter country top-level domain signifier'''
         line = f.readline().strip().split(',')
         lang_idx = line.index('language')
         country_idx = line.index('email')
