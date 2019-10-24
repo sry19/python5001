@@ -19,6 +19,6 @@ def test_primes_to_max():
     pg_2 = PrimeGenerator()
     pg_2.primes_to_max(500)
     assert 269 == pg_2.prime_lst[56]
-    assert 419 == pg.prime_lst[80]
-    assert 2 == pg.prime_lst[0]
-    assert 73 == pg.prime_lst[20]
+    assert 419 == pg_2.prime_lst[80]
+    assert 2 == pg_2.prime_lst[0]
+    assert 73 == pg_2.prime_lst[20]
