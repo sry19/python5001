@@ -1,5 +1,6 @@
 from text_cleaner import TextCleaner
 import sys
+N = 10
 
 
 def main(file_name):
@@ -13,9 +14,9 @@ def main(file_name):
         line = tc.pre_process(line.strip())
         for sentence in line.split('.'):
             tc.separate_sentences(sentence)
-    tc.count_uni_word()
-    tc.count_bi_word()
-    tc.count_tri_word()
+    tc.print_out_uni(N)
+    tc.print_out_bi(N)
+    tc.print_out_tri(N)
 
 
 main(sys.argv[1])

@@ -34,7 +34,8 @@ def test_count_uni_word():
     file_content = '''A necro- philiac entertainment for the whole family to e\
 njoy, '''
     tc.separate_sentences(file_content)
-    tc.count_uni_word()
+    assert tc.count_uni_word(3) == [('a', 0.091), ('necro', 0.091),
+                                    ('philiac', 0.091)]
     assert tc.nf_uni.n_gram_dict == {'a': 0.091, 'necro': 0.091,
                                      'philiac': 0.091, 'entertainment': 0.091,
                                      'for': 0.091, 'the': 0.091,
@@ -50,7 +51,8 @@ def test_count_bi_word():
     tc.separate_sentences(file_content)
     file_content = '''to enjoy, '''
     tc.separate_sentences(file_content)
-    tc.count_bi_word()
+    assert tc.count_bi_word(3) == [('a_necro', 0.2), ('necro_philiac', 0.1),
+                                   ('philiac_entertainment', 0.1)]
     assert tc.nf_bi.n_gram_dict == {'a_necro': 0.2, 'necro_philiac': 0.1,
                                     'philiac_entertainment': 0.1,
                                     'entertainment_for': 0.1,
@@ -65,7 +67,9 @@ def test_count_tri_word():
     file_content = '''A necro- philiac entertainment for the whole family to e\
 njoy, '''
     tc.separate_sentences(file_content)
-    tc.count_tri_word()
+    assert tc.count_tri_word(3) == [('a_necro_philiac', 0.111),
+                                    ('necro_philiac_entertainment', 0.111),
+                                    ('philiac_entertainment_for', 0.111)]
     assert tc.nf_tri.n_gram_dict == {'a_necro_philiac': 0.111,
                                      'necro_philiac_entertainment': 0.111,
                                      'philiac_entertainment_for': 0.111,
