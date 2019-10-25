@@ -22,14 +22,13 @@ class TextCleaner:
     def separate_sentences(self, file_content):
         '''generates word list
             string --> None'''
-        file_content = re.sub(r"[()[\]{}:\-\"]", '', file_content,
+        file_content = re.sub(r"(\-)\s", ' ', file_content,
                               count=0, flags=0)
         new_content = file_content.strip().lower().replace(',', ' COMMA')
-        file_content_lst = new_content.split(' ')
-        for i in file_content_lst:
-            if i == '':
-                file_content_lst.remove(i)
-        self.word_lst.append(file_content_lst)
+        file_content_lst = re.findall(r"[a-zA-Z]+[\'\-]?[a-zA-Z]*",
+                                      new_content)
+        if file_content_lst:
+            self.word_lst.append(file_content_lst)
 
     def count_uni_word(self, n):
         '''counts unigrams'''
