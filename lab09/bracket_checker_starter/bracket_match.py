@@ -4,9 +4,11 @@ from stack import Stack
 class BracketMatch:
     """Class for evaluating parenthetical strings"""
     def __init__(self):
+        '''Construct matched brackets patterns'''
         self.match_dict = {'(': ')', '[': ']', '{': '}'}
 
     def brackets_match(self, line):
+        '''Check if the brackets in the string are matched'''
         ch_stack = Stack()
         for ch in line:
             if ch in self.match_dict.keys():

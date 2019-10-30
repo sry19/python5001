@@ -4,6 +4,8 @@ from stack import Stack
 class StringProcessor:
     """Class for processing strings"""
     def process_string(self, line):
+        '''return a string that has been decoded
+            string -> string'''
         CARET = '^'
         ASTERISK = '*'
 

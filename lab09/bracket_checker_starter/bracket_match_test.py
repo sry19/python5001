@@ -2,6 +2,7 @@ from bracket_match import BracketMatch
 
 
 def test_constructor():
+    '''Test __init__'''
     bm = BracketMatch()
     assert bm.match_dict == {'(': ')', '[': ']', '{': '}'}
 
