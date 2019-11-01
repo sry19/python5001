@@ -1,4 +1,4 @@
-from word_ladder import WordLadder
+from word_ladder_extra_point import WordLadder
 
 
 def main():
@@ -9,7 +9,7 @@ def main():
     while True:
         w1, w2 = input("> ").split()
         # Create a WordLadder object
-        wl = WordLadder(w1, w2, english_words[len(w1)])
+        wl = WordLadder(w1, w2, english_words)
         # Generate the word ladder
         word_ladder = wl.make_ladder()
         print("Ladder: ", word_ladder)

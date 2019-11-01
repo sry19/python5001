@@ -1,4 +1,4 @@
-from word_ladder import WordLadder
+from word_ladder_extra_point import WordLadder
 
 
 def load_words():
@@ -22,22 +22,19 @@ def test_constructor():
     '''Test __init__'''
     valid_words = load_words()
     w1, w2 = "earth", "ocean"
-    wl = WordLadder(w1, w2, valid_words[len(w1)])
+    wl = WordLadder(w1, w2, valid_words)
     assert wl.start_word == "earth"
     assert wl.end_word == "ocean"
-    assert wl.word_set == valid_words[5]
+    assert wl.word_set == valid_words
 
 
 def test_make_ladder():
     '''Test make_ladder'''
     valid_words = load_words()
-    w1, w2 = "earth", "ocean"
-    wl = WordLadder(w1, w2, valid_words[len(w1)])
-    assert wl.make_ladder().items == ["earth", "barth", "barih", "baris",
-                                      "batis", "bitis", "aitis", "antis",
-                                      "antas", "antal", "ontal",
-                                      "octal", "octan", "ocean"]
-
-    w1, w2 = "hat", "love"
+    w1, w2 = "a", "apple"
     wl = WordLadder(w1, w2, valid_words)
-    assert wl.make_ladder() is None
+    assert wl.make_ladder().items == ["a", "al", "apl", "appl", "apple"]
+
+    w1, w2 = "love", "hat"
+    wl = WordLadder(w1, w2, valid_words)
+    assert wl.make_ladder().items == ["love", "loe", "hoe", "hae", "hat"]

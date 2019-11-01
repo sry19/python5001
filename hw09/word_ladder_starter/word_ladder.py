@@ -10,7 +10,7 @@ class WordLadder:
         '''Construct a WordLadder'''
         self.start_word = w1
         self.end_word = w2
-        self.word_set = wordlist[len(w1)]
+        self.word_set = wordlist
 
     def make_ladder(self):
         '''Find the shortest path from start word to end word
