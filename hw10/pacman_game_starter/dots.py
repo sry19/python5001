@@ -38,9 +38,24 @@ class Dots:
     # TODO:
     # PROBLEM 3: implement dot eating
     # BEGIN CODE CHANGES
-    def eat(self):  # You might want/need to pass arguments here.
-        pass
-
+    def eat(self, x, y):  # You might want/need to pass arguments here.
+        for i in range(len(self.top_row) - 1, -1, -1):
+            if self.top_row[i].x == x and self.top_row[i].y == y:
+                del self.top_row[i]
+                #return
+        for i in range(len(self.bottom_row) - 1, -1, -1):
+            if self.bottom_row[i].x == x and self.bottom_row[i].y == y:
+                del self.bottom_row[i]
+                #return
+        for i in range(len(self.left_col) - 1, -1, -1):
+            if self.left_col[i].x == x and self.left_col[i].y == y:
+                del self.left_col[i]
+                #return
+        for i in range(len(self.right_col) - 1, -1, -1):
+            if self.right_col[i].x == x and self.right_col[i].y == y:
+                del self.right_col[i]
+                
+            
     # END CODE CHANGES
 
     def dots_left(self):

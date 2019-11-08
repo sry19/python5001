@@ -3,14 +3,6 @@ HEIGHT = 500
 PACMAN_HEIGHT = 100
 PACMAN_WIDTH = 100
 SPEED = 3
-x = WIDTH/2
-y = HEIGHT/2
-x_add = 0
-y_add = 0
-angle = 0
-delta = -1
-direct = 45
-other_direct = 315
 LEFT_START = -135
 LEFT_END = 135
 RIGHT_START = 45
@@ -21,6 +13,14 @@ DOWN_START = -225
 DOWN_END = 45
 START_ANGLE = 0
 END_ANGLE = 45
+x = WIDTH/2
+y = HEIGHT/2
+x_add = 0
+y_add = 0
+angle = 0
+delta = -1
+direct = 45
+other_direct = 315
 
 
 def setup():

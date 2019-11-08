@@ -72,7 +72,19 @@ class Pinky(GameCharacter):
         # Pinky should decide at each intersection whether to go left, right
         # up or down depending on which direction Pacman is further away in.
         # START CODE CHANGES
-
+        if on_horz and on_vert:
+            if left_right_part > 0 and abs(left_right_part) > abs(up_down_part):
+                self.x_add = self.velocity
+                self.y_add = 0
+            elif left_right_part < 0 and abs(left_right_part) > abs(up_down_part):
+                self.x_add = -self.velocity
+                self.y_add = 0
+            elif up_down_part > 0:
+                self.y_add = self.velocity
+                self.x_add = 0
+            elif up_down_part < 0:
+                self.y_add = -self.velocity
+                self.x_add = 0
         # END CODE CHANGES
 
         # If the player wins, stop Pinky moving

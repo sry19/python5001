@@ -17,10 +17,10 @@ class Pacman(GameCharacter):
         self.max_mouth_angle = 45
         self.min_mouth_angle = 0
         self.mouth_angle = 0
-        self.open_close = 0
+        self.mouth_speed = 5
+        self.open_close = self.mouth_speed
         self.rot_begin = 0
         self.rot_end = 360
-        self.mouth_speed = 5
         self.velocity = 3
         self.WALL_TOLERANCE = 6
         self.MOUTH_RIGHT_BEGIN_ANGLE = 0
@@ -53,7 +53,7 @@ class Pacman(GameCharacter):
         self.on_bottom = (abs(self.y - self.maze.BOTTOM_HORIZ) <
                           self.WALL_TOLERANCE)
 
-        if (self.mouth_angle < self.max_mouth_angle):
+        if (self.mouth_angle > self.max_mouth_angle):
             self.open_close = -(self.mouth_speed)
         if (self.mouth_angle < self.min_mouth_angle):
             self.open_close = self.mouth_speed
@@ -82,6 +82,32 @@ class Pacman(GameCharacter):
         # Based on PacMan's location, PacMan should gobble
         # dots from a different list.
         # BEGIN CODE CHANGES
+        self.maze.eat_dots(self.x, self.y)
+       
+        if (self.x >= self.maze.WIDTH + self.CHAR_WIDTH/2):
+            self.x = self.CHAR_WIDTH/2
+            self.maze.eat_dots(self.x, self.y)
+        elif (self.x >= self.maze.WIDTH - self.CHAR_WIDTH/2):
+            self.maze.eat_dots(self.x - self.maze.WIDTH, self.y)
+
+        if (self.y > self.maze.HEIGHT + self.CHAR_HEIGHT/2):
+            self.y = self.CHAR_HEIGHT/2
+            self.maze.eat_dots(self.x, self.y)
+        elif (self.y >= self.maze.HEIGHT - self.CHAR_HEIGHT/2):
+            self.maze.eat_dots(self.x, self.y - self.maze.HEIGHT)
+
+        if (self.x < -(self.CHAR_WIDTH/2)):
+            self.x = self.maze.WIDTH - self.CHAR_WIDTH/2
+            self.maze.eat_dots(self.x, self.y)
+        elif (self.x <= self.CHAR_WIDTH/2):
+            self.maze.eat_dots(self.x + self.maze.WIDTH, self.y)
+
+        if (self.y < -(self.CHAR_WIDTH/2)):
+            self.y = self.maze.HEIGHT - self.CHAR_HEIGHT/2
+            self.maze.eat_dots(self.x, self.y)
+        elif (self.y <= self.CHAR_HEIGHT/2):
+            self.maze.eat_dots(self.x, self.y + self.maze.HEIGHT)
+     
 
         # END CODE CHANGES
 
