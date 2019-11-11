@@ -91,11 +91,13 @@ class Pinky(GameCharacter):
 
     def update_eyes(self, up_down_part, left_right_part):
         """Set self.looking value based on position of Pinky w/r/t Pacman"""
-        if up_down_part and abs(up_down_part) > 5:
+        EYE_LIMIT = 5
+
+        if up_down_part and abs(up_down_part) > EYE_LIMIT:
             y = up_down_part/abs(up_down_part)
         else:
             y = 0
-        if left_right_part and abs(left_right_part) > 5:
+        if left_right_part and abs(left_right_part) > EYE_LIMIT:
             x = left_right_part/abs(left_right_part)
         else:
             x = 0

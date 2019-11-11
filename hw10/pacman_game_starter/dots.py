@@ -36,6 +36,7 @@ class Dots:
             self.right_col[i].display()
 
     def eat(self, x, y):
+        '''Eat every dot Pac-man meets'''
         if abs(self.TH - y) < self.EAT_DIST:
             for i in range(len(self.top_row) - 1, -1, -1):
                 if abs(self.top_row[i].x - x) < self.EAT_DIST:

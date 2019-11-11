@@ -19,6 +19,7 @@ class Maze:
                          TOP_HORIZ, BOTTOM_HORIZ)
 
     def eat_dots(self, x, y):
+        '''Eat dots'''
         self.dots.eat(x, y)
 
     def update(self):

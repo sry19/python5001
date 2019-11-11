@@ -18,6 +18,7 @@ def test_constructor():
 
 
 def test_eat_dots():
+    '''Test eat dots'''
     g = GameController(600, 600)
     m = Maze(600, 600, 150, 450,
              150, 450, g)
