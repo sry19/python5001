@@ -64,19 +64,13 @@ class Pinky(GameCharacter):
                 abs(left_right_part) < self.WIN_PROXIMITY):
             self.gc.pinky_wins = True
 
-        # TODO:
-        # PROBLEM 2: Make Pinky chase Pacman!
-        # Study the code above and below these lines to understand how
-        # Pinky's movements are calculated, and how Pinky's position with
-        # respect to Pacman is represented.
-        # Pinky should decide at each intersection whether to go left, right
-        # up or down depending on which direction Pacman is further away in.
-        # START CODE CHANGES
         if on_horz and on_vert:
-            if left_right_part > 0 and abs(left_right_part) > abs(up_down_part):
+            if left_right_part > 0 and (abs(left_right_part) >
+                                        abs(up_down_part)):
                 self.x_add = self.velocity
                 self.y_add = 0
-            elif left_right_part < 0 and abs(left_right_part) > abs(up_down_part):
+            elif left_right_part < 0 and (abs(left_right_part) >
+                                          abs(up_down_part)):
                 self.x_add = -self.velocity
                 self.y_add = 0
             elif up_down_part > 0:
@@ -85,7 +79,6 @@ class Pinky(GameCharacter):
             elif up_down_part < 0:
                 self.y_add = -self.velocity
                 self.x_add = 0
-        # END CODE CHANGES
 
         # If the player wins, stop Pinky moving
         if self.gc.player_wins:

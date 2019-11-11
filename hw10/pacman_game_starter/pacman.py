@@ -74,42 +74,16 @@ class Pacman(GameCharacter):
         self.x = self.x + self.x_add
         self.y = self.y + self.y_add
 
-        # TODO:
-        # PROBLEM 3: implement dot eating
-        # PacMan has access to the maze object, which
-        # in turn has access to the dots object. Call the
-        # eat_dots method on the maze object here.
-        # Based on PacMan's location, PacMan should gobble
-        # dots from a different list.
-        # BEGIN CODE CHANGES
         self.maze.eat_dots(self.x, self.y)
-       
-        if (self.x >= self.maze.WIDTH + self.CHAR_WIDTH/2):
-            self.x = self.CHAR_WIDTH/2
-            self.maze.eat_dots(self.x, self.y)
-        elif (self.x >= self.maze.WIDTH - self.CHAR_WIDTH/2):
+
+        if self.x >= self.maze.WIDTH - self.CHAR_WIDTH/2:
             self.maze.eat_dots(self.x - self.maze.WIDTH, self.y)
-
-        if (self.y > self.maze.HEIGHT + self.CHAR_HEIGHT/2):
-            self.y = self.CHAR_HEIGHT/2
-            self.maze.eat_dots(self.x, self.y)
-        elif (self.y >= self.maze.HEIGHT - self.CHAR_HEIGHT/2):
+        if self.y >= self.maze.HEIGHT - self.CHAR_HEIGHT/2:
             self.maze.eat_dots(self.x, self.y - self.maze.HEIGHT)
-
-        if (self.x < -(self.CHAR_WIDTH/2)):
-            self.x = self.maze.WIDTH - self.CHAR_WIDTH/2
-            self.maze.eat_dots(self.x, self.y)
-        elif (self.x <= self.CHAR_WIDTH/2):
+        if (self.x <= self.CHAR_WIDTH/2):
             self.maze.eat_dots(self.x + self.maze.WIDTH, self.y)
-
-        if (self.y < -(self.CHAR_WIDTH/2)):
-            self.y = self.maze.HEIGHT - self.CHAR_HEIGHT/2
-            self.maze.eat_dots(self.x, self.y)
-        elif (self.y <= self.CHAR_HEIGHT/2):
+        if (self.y <= self.CHAR_HEIGHT/2):
             self.maze.eat_dots(self.x, self.y + self.maze.HEIGHT)
-     
-
-        # END CODE CHANGES
 
     def control(self, keyCode):
         """Handles keyboard input for PacMan"""

@@ -35,28 +35,23 @@ class Dots:
         for i in range(0, len(self.right_col)):
             self.right_col[i].display()
 
-    # TODO:
-    # PROBLEM 3: implement dot eating
-    # BEGIN CODE CHANGES
-    def eat(self, x, y):  # You might want/need to pass arguments here.
-        for i in range(len(self.top_row) - 1, -1, -1):
-            if self.top_row[i].x == x and self.top_row[i].y == y:
-                del self.top_row[i]
-                #return
-        for i in range(len(self.bottom_row) - 1, -1, -1):
-            if self.bottom_row[i].x == x and self.bottom_row[i].y == y:
-                del self.bottom_row[i]
-                #return
-        for i in range(len(self.left_col) - 1, -1, -1):
-            if self.left_col[i].x == x and self.left_col[i].y == y:
-                del self.left_col[i]
-                #return
-        for i in range(len(self.right_col) - 1, -1, -1):
-            if self.right_col[i].x == x and self.right_col[i].y == y:
-                del self.right_col[i]
-                
-            
-    # END CODE CHANGES
+    def eat(self, x, y):
+        if abs(self.TH - y) < self.EAT_DIST:
+            for i in range(len(self.top_row) - 1, -1, -1):
+                if abs(self.top_row[i].x - x) < self.EAT_DIST:
+                    del self.top_row[i]
+        elif abs(self.BH - y) < self.EAT_DIST:
+            for i in range(len(self.bottom_row) - 1, -1, -1):
+                if abs(self.bottom_row[i].x - x) < self.EAT_DIST:
+                    del self.bottom_row[i]
+        if abs(self.LV - x) < self.EAT_DIST:
+            for i in range(len(self.left_col) - 1, -1, -1):
+                if abs(self.left_col[i].y - y) < self.EAT_DIST:
+                    del self.left_col[i]
+        elif abs(self.RV - x) < self.EAT_DIST:
+            for i in range(len(self.right_col) - 1, -1, -1):
+                if abs(self.right_col[i].y - y) < self.EAT_DIST:
+                    del self.right_col[i]
 
     def dots_left(self):
         """Returns the number of remaing dots in the collection"""

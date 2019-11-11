@@ -18,13 +18,8 @@ class Maze:
                          LEFT_VERT, RIGHT_VERT,
                          TOP_HORIZ, BOTTOM_HORIZ)
 
-    # TODO:
-    # PROBLEM 3: implement dot eating
-    # BEGIN CODE CHANGES
-    def eat_dots(self, x, y):  # You might want/need to pass arguments here.
+    def eat_dots(self, x, y):
         self.dots.eat(x, y)
-
-    # END CODE CHANGES
 
     def update(self):
         """Make necessary per-frame updates"""
@@ -48,70 +43,70 @@ class Maze:
         clearance = 60
         overdraw = 20  # Start drawing offscreen
         t = -(overdraw)
-        l = -(overdraw)
+        l_ = -(overdraw)
         border = 20
         big_rad = 30
         small_rad = 17
 
         # Upper left
         t = -(overdraw)
-        l = -(overdraw)
+        l_ = -(overdraw)
         w = self.LEFT_VERT - clearance + overdraw
         h = self.TOP_HORIZ - clearance + overdraw
-        rect(l, t, w, h, big_rad)
-        rect(l, t, w - border, h - border, small_rad)
+        rect(l_, t, w, h, big_rad)
+        rect(l_, t, w - border, h - border, small_rad)
 
         # Upper middle
         t = -(overdraw)
-        l = self.LEFT_VERT + clearance
+        l_ = self.LEFT_VERT + clearance
         w = (self.RIGHT_VERT - clearance) - (self.LEFT_VERT + clearance)
-        rect(l, t, w, h, big_rad)
-        rect(l + border, t, w - border*2, h - border, small_rad)
+        rect(l_, t, w, h, big_rad)
+        rect(l_ + border, t, w - border*2, h - border, small_rad)
 
         # Upper right
-        l = self.RIGHT_VERT + clearance
+        l_ = self.RIGHT_VERT + clearance
         w = self.RIGHT_VERT - clearance + overdraw
-        rect(l, t, w, h, big_rad)
-        rect(l + border, t, w - border*2, h - border, small_rad)
+        rect(l_, t, w, h, big_rad)
+        rect(l_ + border, t, w - border*2, h - border, small_rad)
 
         # Middle left
         t = self.TOP_HORIZ + clearance
-        l = -(overdraw)
+        l_ = -(overdraw)
         w = self.LEFT_VERT - clearance + overdraw
         h = (self.BOTTOM_HORIZ - clearance) - (self.TOP_HORIZ + clearance)
-        rect(l, t, w, h, big_rad)
-        rect(l, t + border, w - border, h - border*2, small_rad)
+        rect(l_, t, w, h, big_rad)
+        rect(l_, t + border, w - border, h - border*2, small_rad)
 
         # Middle middle
-        l = self.LEFT_VERT + clearance
+        l_ = self.LEFT_VERT + clearance
         t = self.TOP_HORIZ + clearance
         w = (self.RIGHT_VERT - clearance) - (self.LEFT_VERT + clearance)
-        rect(l, t, w, h, big_rad)
-        rect(l + border, t + border, w - border*2, h - border*2, small_rad)
+        rect(l_, t, w, h, big_rad)
+        rect(l_ + border, t + border, w - border*2, h - border*2, small_rad)
 
         # Middle right
-        l = self.RIGHT_VERT + clearance
+        l_ = self.RIGHT_VERT + clearance
         t = self.TOP_HORIZ + clearance
         w = self.RIGHT_VERT - clearance + overdraw
-        rect(l, t, w, h, big_rad)
-        rect(l + border, t + border, w - border*2, h - border*2, small_rad)
+        rect(l_, t, w, h, big_rad)
+        rect(l_ + border, t + border, w - border*2, h - border*2, small_rad)
 
         # Lower left
         w = self.LEFT_VERT - clearance + overdraw
         h = self.TOP_HORIZ - clearance + overdraw
-        l = -(overdraw)
+        l_ = -(overdraw)
         t = self.BOTTOM_HORIZ + clearance
-        rect(l, t, w, h, big_rad)
-        rect(l, t + border, w - border, h - border, small_rad)
+        rect(l_, t, w, h, big_rad)
+        rect(l_, t + border, w - border, h - border, small_rad)
 
         # Lower middle
-        l = self.LEFT_VERT + clearance
+        l_ = self.LEFT_VERT + clearance
         w = (self.RIGHT_VERT - clearance) - (self.LEFT_VERT + clearance)
-        rect(l, t, w, h, big_rad)
-        rect(l + border, t + border, w - border*2, h - border, small_rad)
+        rect(l_, t, w, h, big_rad)
+        rect(l_ + border, t + border, w - border*2, h - border, small_rad)
 
         # Lower right
-        l = self.RIGHT_VERT + clearance
+        l_ = self.RIGHT_VERT + clearance
         w = self.RIGHT_VERT - clearance + overdraw
-        rect(l, t, w, h, big_rad)
-        rect(l + border, t + border, w - border*2, h - border, small_rad)
+        rect(l_, t, w, h, big_rad)
+        rect(l_ + border, t + border, w - border*2, h - border, small_rad)
