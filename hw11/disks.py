@@ -12,19 +12,19 @@ class Disks:
         self.black_count = 2
         self.disks_lst = [[0 for _ in range(self.column)]
                           for _ in range(self.row)]
-        self.disks_lst[self.row//2-1][self.column//2-1] = Disk(white,
+        self.disks_lst[self.row//2-1][self.column//2-1] = Disk('white',
                                                                self.row//2 - 1,
                                                                self.column//2-1
                                                                )
-        self.disks_lst[self.row//2][self.column//2] = Disk(white,
+        self.disks_lst[self.row//2][self.column//2] = Disk('white',
                                                            self.row//2,
                                                            self.column//2
                                                            )
-        self.disks_lst[self.row//2-1][self.column//2] = Disk(black,
+        self.disks_lst[self.row//2-1][self.column//2] = Disk('black',
                                                              self.row//2 - 1,
                                                              self.column//2
                                                              )
-        self.disks_lst[self.row//2][self.column//2-1] = Disk(black,
+        self.disks_lst[self.row//2][self.column//2-1] = Disk('black',
                                                              self.row//2,
                                                              self.column//2 - 1
                                                              )
@@ -65,6 +65,8 @@ class Disks:
         visited = set()
 
         for i in range(row - 1, -1, -1):
+            if self.disks_lst[i][col] == 0:
+                break
             if i == row - 1 and self.disks_lst[i][col].color == color:
                 break
             elif i != row - 1 and self.disks_lst[i][col].color == color:
@@ -74,6 +76,8 @@ class Disks:
                         self.change_color(j, col)
 
         for i in range(row + 1, self.row):
+            if self.disks_lst[i][col] == 0:
+                break
             if i == row + 1 and self.disks_lst[i][col].color == color:
                 break
             elif i != row + 1 and self.disks_lst[i][col].color == color:
@@ -154,3 +158,79 @@ class Disks:
             return False
         else:
             return True
+
+    def is_valid(self, color, row, col):
+        '''Check if player can put disk'''
+        for i in range(row - 1, -1, -1):
+            if self.disks_lst[i][col] == 0:
+                break
+            if i == row - 1 and self.disks_lst[i][col].color == color:
+                break
+            elif i != row - 1 and self.disks_lst[i][col].color == color:
+                return True
+
+        for i in range(row + 1, self.row):
+            if self.disks_lst[i][col] == 0:
+                break
+            if i == row + 1 and self.disks_lst[i][col].color == color:
+                break
+            elif i != row + 1 and self.disks_lst[i][col].color == color:
+                return True
+
+        for j in range(col - 1, -1, -1):
+            if self.disks_lst[row][j] == 0:
+                break
+            if j == col - 1 and self.disks_lst[row][j].color == color:
+                break
+            elif self.disks_lst[row][j].color == color:
+                return True
+
+        for j in range(col + 1, self.column):
+            if self.disks_lst[row][j] == 0:
+                break
+            if j == col + 1 and self.disks_lst[row][j].color == color:
+                break
+            elif self.disks_lst[row][j].color == color:
+                return True
+
+        i = 1
+        while row + i < self.row and col + i < self.column:
+            if self.disks_lst[row + i][col + i] == 0:
+                break
+            if i >= 2 and self.disks_lst[row + i][col + i].color == color:
+                return True
+            i += 1
+
+        i = 1
+        while row - i >= 0 and col - i >= 0:
+            if self.disks_lst[row - i][col - i] == 0:
+                break
+            if i >= 2 and self.disks_lst[row - i][col - i].color == color:
+                return True
+            i += 1
+
+        i = 1
+        while row + i < self.row and col - i >= 0:
+            if self.disks_lst[row + i][col - i] == 0:
+                break
+            if i >= 2 and self.disks_lst[row + i][col - i].color == color:
+                return True
+            i += 1
+
+        i = 1
+        while row + i < self.row and col - i >= 0:
+            if self.disks_lst[row + i][col - i] == 0:
+                break
+            if i >= 2 and self.disks_lst[row + i][col - i].color == color:
+                return True
+            i += 1
+
+        i = 1
+        while row - i >= 0 and col + i < self.column:
+            if self.disks_lst[row - i][col + i] == 0:
+                break
+            if i >= 2 and self.disks_lst[row - i][col + i].color == color:
+                return True
+            i += 1
+
+        return False

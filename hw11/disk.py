@@ -1,6 +1,10 @@
 class Disk:
     '''A disk'''
     def __init__(self, color, row, column):
+        if color == 'white':
+            color = 255
+        else:
+            color = 1
         self.color = color
         self.row = row
         self.column = column
