@@ -7,7 +7,7 @@ HEIGHT = 600
 
 game_controller = GameController(WIDTH, HEIGHT)
 maze = Maze(WIDTH, HEIGHT, game_controller)
-disks = Disks(WIDTH, HEIGHT, game_controller)
+
 
 
 def setup():
@@ -17,7 +17,6 @@ def setup():
 def draw():
     background(6,129,34) 
     maze.display()
-    disks.display()
     game_controller.update()
     
 def mousePressed():

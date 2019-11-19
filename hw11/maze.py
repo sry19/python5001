@@ -20,7 +20,7 @@ class Maze:
             for j in range(len(self.disks.disks_lst[0])):
                 if self.disks.disks_lst[i][j] == 0 and self.disks.is_valid(color, i, j):
                     break
-        if i == len(self.disks.disks_lst) and j == len(self.disks.disks_lst[0]):
+        if i == len(self.disks.disks_lst):
             return False
         return True
 
@@ -33,6 +33,7 @@ class Maze:
                 self.gc.player_white_wins = True
             else:
                 self.gc.player_black_wins = True
+            self.turn = 0
 
     def display(self):
         self.update()
@@ -45,16 +46,18 @@ class Maze:
             line(i, 0, i, self.WIDTH)
 
     def add_disk(self, x, y):
-        if not self.disks.is_valid(self.turn, x // 100, y // 100):
+        if self.turn != 'black' and self.turn != 'white':
+            return
+        if not self.disks.is_valid(self.turn, y // 100, x // 100):
             return
         if self.turn == 'black':
-            self.disks.add_disk('black', x, y)
-            self.disks.flip(self.turn, x//100, y//100)
+            self.disks.add_disk('black', y//100, x//100)
+            self.disks.flip(self.turn, y//100, x//100)
             self.turn = 'white'
-        else:
-            self.disks.add_disk('white', x, y)
-            self.disks.flip(self.turn, x//100, y//100)
+        elif self.turn == 'white':
+            self.disks.add_disk('white', y//100, x//100)
+            self.disks.flip(self.turn, y//100, x//100)
             self.turn = 'black'
-        self.update(self.turn)
+        self.update()
         self.gc.update()
 
