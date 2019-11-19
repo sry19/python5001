@@ -36,7 +36,6 @@ class Disks:
             for j in range(self.column):
                 if self.disks_lst[i][j] != 0:
                     self.disks_lst[i][j].display()
-        # if self.gc.self.player_white_wins or self.gc.self.player_black_wins:          
 
     def add_disk(self, color, row, column):
         '''Add a disk to maze'''
@@ -45,7 +44,7 @@ class Disks:
         self.disks_lst[row][column] = Disk(color, row, column)
         if color == 'black':
             self.black_count += 1
-        else:
+        elif color == 'white':
             self.white_count += 1
         return True
 
@@ -181,10 +180,12 @@ class Disks:
         '''Check if player can put disk'''
         if self.disks_lst[row][col] != 0:
             return False
+
         if color == 'white':
             color = 255
         elif color == 'black':
             color = 1
+
         for i in range(row - 1, -1, -1):
             if self.disks_lst[i][col] == 0:
                 break
@@ -214,7 +215,7 @@ class Disks:
                 break
             if j == col + 1 and self.disks_lst[row][j].color == color:
                 break
-            elif self.disks_lst[row][j].color == color:
+            elif j != col + 1 and self.disks_lst[row][j].color == color:
                 return True
 
         i = 1

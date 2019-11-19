@@ -4,7 +4,7 @@ class GameController:
         self.WIDTH = WIDTH
         self.HEIGHT = HEIGHT
         self.player_white_wins = False
-        self.pinky_black_wins = False
+        self.player_black_wins = False
 
     def update(self):
         """Carries out necessary actions if pinky or player wins"""
@@ -12,7 +12,7 @@ class GameController:
             fill(1)
             textSize(50)
             text("WHITE WINS", self.WIDTH/2 - 140, self.HEIGHT/2)
-        if self.pinky_black_wins:
+        if self.player_black_wins:
             fill(1)
             textSize(50)
             text("BLACK WINS", self.WIDTH/2 - 140, self.HEIGHT/2)

@@ -16,24 +16,25 @@ class Maze:
 
     def check_if_valid(self, color):
         '''Checks if there is any place that player can put disk in '''
+        flag = False
         for i in range(len(self.disks.disks_lst)):
             for j in range(len(self.disks.disks_lst[0])):
-                if self.disks.disks_lst[i][j] == 0 and self.disks.is_valid(color, i, j):
+                if self.disks.disks_lst[i][j] == 0 and \
+                   self.disks.is_valid(color, i, j):
+                    flag = True
                     break
-        if i == len(self.disks.disks_lst):
-            return False
-        return True
+        return flag
 
     def update(self):
         if self.disks.white_count + self.disks.black_count == \
             len(self.disks.disks_lst) * len(self.disks.disks_lst[0]) or \
-                not self.check_if_valid('white') or \
-                not self.check_if_valid('black'):
+                not self.check_if_valid(self.turn):
             if self.disks.white_count > self.disks.black_count:
                 self.gc.player_white_wins = True
             else:
                 self.gc.player_black_wins = True
             self.turn = 0
+            self.gc.update()
 
     def display(self):
         self.update()
@@ -60,4 +61,3 @@ class Maze:
             self.turn = 'black'
         self.update()
         self.gc.update()
-
