@@ -8,7 +8,7 @@ class Maze:
         self.WIDTH = WIDTH
         self.HEIGHT = HEIGHT
         self.gc = game_controller
-        self.disks = Disks(self.WIDTH, self.HEIGHT)
+        self.disks = Disks(self.WIDTH, self.HEIGHT, game_controller)
         self.turn = 'black'
 
     def change_color(self, row, col):
@@ -24,17 +24,18 @@ class Maze:
             return False
         return True
 
-    def update(self, color):
+    def update(self):
         if self.disks.white_count + self.disks.black_count == \
             len(self.disks.disks_lst) * len(self.disks.disks_lst[0]) or \
-                not self.check_if_valid(color):
+                not self.check_if_valid('white') or \
+                not self.check_if_valid('black'):
             if self.disks.white_count > self.disks.black_count:
                 self.gc.player_white_wins = True
             else:
                 self.gc.player_black_wins = True
 
     def display(self):
-        self.update('white')
+        self.update()
         self.disks.display()
         for i in range(0, self.WIDTH + 1, 100):
             strokeWeight(3)
@@ -42,8 +43,10 @@ class Maze:
         for i in range(0, self.HEIGHT + 1, 100):
             strokeWeight(3)
             line(i, 0, i, self.WIDTH)
-            
+
     def add_disk(self, x, y):
+        if not self.disks.is_valid(self.turn, x // 100, y // 100):
+            return
         if self.turn == 'black':
             self.disks.add_disk('black', x, y)
             self.disks.flip(self.turn, x//100, y//100)

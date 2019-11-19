@@ -16,7 +16,7 @@ class Disk:
 
     def change_color(self):
         '''Changes color of a disk'''
-        if self.color == 'white':
-            self.color = 'black'
+        if self.color == 255:
+            self.color = 1
         else:
-            self.color = 'white'
+            self.color = 255

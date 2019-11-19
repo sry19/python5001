@@ -3,7 +3,8 @@ from disk import Disk
 
 class Disks:
     '''A collection of disks'''
-    def __init__(self, WIDTH, HEIGHT):
+    def __init__(self, WIDTH, HEIGHT, gamecontroller):
+        self.gc = gamecontroller
         self.width = WIDTH
         self.height = HEIGHT
         self.row = self.height // 100
@@ -35,6 +36,8 @@ class Disks:
             for j in range(self.column):
                 if self.disks_lst[i][j] != 0:
                     self.disks_lst[i][j].display()
+        # if self.gc.self.player_white_wins or self.gc.self.player_black_wins:
+            
 
     def add_disk(self, color, wid, hei):
         '''Add a disk to maze'''
@@ -51,9 +54,11 @@ class Disks:
 
     def change_color(self, row, col):
         '''Changes color of a disk'''
-        if self.disks_lst[row][column] != 0:
-            self.disks_lst[row][column].change_color()
-            if self.disks_lst[row][column] == 'black':
+        BLACK = 1
+
+        if self.disks_lst[row][col] != 0:
+            self.disks_lst[row][col].change_color()
+            if self.disks_lst[row][col].color == BLACK:
                 self.black_count += 1
                 self.white_count -= 1
             else:
@@ -62,6 +67,11 @@ class Disks:
 
     def flip(self, color, row, col):
         '''flips the disks'''
+        if color == 'white':
+            color = 255
+        else:
+            color = 1
+
         visited = set()
 
         for i in range(row - 1, -1, -1):
@@ -87,6 +97,8 @@ class Disks:
                         self.change_color(j, col)
 
         for j in range(col - 1, -1, -1):
+            if self.disks_lst[row][j] == 0:
+                break
             if j == col - 1 and self.disks_lst[row][j].color == color:
                 break
             elif self.disks_lst[row][j].color == color:
@@ -96,6 +108,8 @@ class Disks:
                         self.change_color(row, i)
 
         for j in range(col + 1, self.column):
+            if self.disks_lst[row][j] == 0:
+                break
             if j == col + 1 and self.disks_lst[row][j].color == color:
                 break
             elif self.disks_lst[row][j].color == color:
@@ -105,7 +119,9 @@ class Disks:
                         self.change_color(row, i)
 
         i = 1
-        while row + i < self.row and col + i < self.col:
+        while row + i < self.row and col + i < self.column:
+            if self.disks_lst[row + i][col + i] == 0:
+                break
             if self.disks_lst[row + i][col + i].color == color:
                 for k in range(1, i):
                     if (row + i, col + i) not in visited:
@@ -116,6 +132,8 @@ class Disks:
 
         i = 1
         while row - i >= 0 and col - i >= 0:
+            if self.disks_lst[row - i][col - i] == 0:
+                break
             if self.disks_lst[row - i][col - i].color == color:
                 for k in range(1, i):
                     if (row - i, col - i) not in visited:
@@ -126,6 +144,8 @@ class Disks:
 
         i = 1
         while row + i < self.row and col - i >= 0:
+            if self.disks_lst[row + i][col - i] == 0:
+                break
             if self.disks_lst[row + i][col - i].color == color:
                 for k in range(1, i):
                     if (row + i, col - i) not in visited:
@@ -136,6 +156,8 @@ class Disks:
 
         i = 1
         while row + i < self.row and col - i >= 0:
+            if self.disks_lst[row + i][col - i] == 0:
+                break
             if self.disks_lst[row + i][col - i].color == color:
                 for k in range(1, i):
                     if (row + i, col - i) not in visited:
@@ -145,7 +167,9 @@ class Disks:
             i += 1
 
         i = 1
-        while row - i >= 0 and col - i < self.column:
+        while row - i >= 0 and col + i < self.column:
+            if self.disks_lst[row - i][col + i] == 0:
+                break
             if self.disks_lst[row - i][col + i].color == color:
                 for k in range(1, i):
                     if (row - i, col + i) not in visited:
@@ -161,6 +185,10 @@ class Disks:
 
     def is_valid(self, color, row, col):
         '''Check if player can put disk'''
+        if color == 'white':
+            color = 255
+        else:
+            color = 1
         for i in range(row - 1, -1, -1):
             if self.disks_lst[i][col] == 0:
                 break
@@ -182,7 +210,7 @@ class Disks:
                 break
             if j == col - 1 and self.disks_lst[row][j].color == color:
                 break
-            elif self.disks_lst[row][j].color == color:
+            elif j != col - 1 and self.disks_lst[row][j].color == color:
                 return True
 
         for j in range(col + 1, self.column):
@@ -197,6 +225,8 @@ class Disks:
         while row + i < self.row and col + i < self.column:
             if self.disks_lst[row + i][col + i] == 0:
                 break
+            if i == 1 and self.disks_lst[row + i][col + i].color == color:
+                break
             if i >= 2 and self.disks_lst[row + i][col + i].color == color:
                 return True
             i += 1
@@ -204,6 +234,8 @@ class Disks:
         i = 1
         while row - i >= 0 and col - i >= 0:
             if self.disks_lst[row - i][col - i] == 0:
+                break
+            if i == 1 and self.disks_lst[row - i][col - i].color == color:
                 break
             if i >= 2 and self.disks_lst[row - i][col - i].color == color:
                 return True
@@ -213,6 +245,8 @@ class Disks:
         while row + i < self.row and col - i >= 0:
             if self.disks_lst[row + i][col - i] == 0:
                 break
+            if i == 1 and self.disks_lst[row + i][col - i].color == color:
+                break
             if i >= 2 and self.disks_lst[row + i][col - i].color == color:
                 return True
             i += 1
@@ -221,6 +255,8 @@ class Disks:
         while row + i < self.row and col - i >= 0:
             if self.disks_lst[row + i][col - i] == 0:
                 break
+            if i == 1 and self.disks_lst[row + i][col - i].color == color:
+                break
             if i >= 2 and self.disks_lst[row + i][col - i].color == color:
                 return True
             i += 1
@@ -228,6 +264,8 @@ class Disks:
         i = 1
         while row - i >= 0 and col + i < self.column:
             if self.disks_lst[row - i][col + i] == 0:
+                break
+            if i == 1 and self.disks_lst[row - i][col + i].color == color:
                 break
             if i >= 2 and self.disks_lst[row - i][col + i].color == color:
                 return True
