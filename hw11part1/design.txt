@@ -26,7 +26,7 @@ class:
            5. flip - given color, row index and col index, flip all disks that can be fliped
            6. invalid - check if player can put disk in this position
 
-3.  maze - draws the maze and display the disks
+3.  maze - draws the maze and displays the disks
            1. __init__
               1.WIDTH
               2.HEIGHT
@@ -45,13 +45,18 @@ class:
                 2.HEIGHT
                 3.white wins
                 4.black wins
-           2. update - when a player wins...
+           2. update - when a player wins, display some texts on the screen
 
 When the user tries to make an illegal move:
    do not do anying and wait for another try
 When the user makes a legal move
     add a new disk and flip the disks between two disks which have the same color
 When it’s the computer’s turn
+    do two for loops
+    try all possible positions and choose a position which flips more tiles
     choose a best way to put disk
 When the game is over (there are no more legal moves)
     show the scores and the winner in the screen
+    no one can place tiles on the board
+
+* There are three control flow statements in Python - if, for and while.    

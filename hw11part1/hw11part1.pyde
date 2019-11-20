@@ -2,17 +2,17 @@ from maze import Maze
 from game_controller import GameController
 from disks import Disks
 
-BOARD_LENGTH = 400
+GRID_NUMBER = 4
 GRID_LENGTH = 100
 
 
-game_controller = GameController(BOARD_LENGTH, BOARD_LENGTH)
-maze = Maze(BOARD_LENGTH, BOARD_LENGTH, game_controller)
+game_controller = GameController(GRID_NUMBER * GRID_LENGTH, GRID_NUMBER * GRID_LENGTH)
+maze = Maze(GRID_NUMBER * GRID_LENGTH, GRID_NUMBER * GRID_LENGTH, game_controller)
 
 
 
 def setup():
-    size(BOARD_LENGTH, BOARD_LENGTH)
+    size(GRID_NUMBER * GRID_LENGTH, GRID_NUMBER * GRID_LENGTH)
 
     
 def draw():
