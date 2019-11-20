@@ -2,16 +2,17 @@ from maze import Maze
 from game_controller import GameController
 from disks import Disks
 
-WIDTH = 400
-HEIGHT = 400
+BOARD_LENGTH = 400
+GRID_LENGTH = 100
 
-game_controller = GameController(WIDTH, HEIGHT)
-maze = Maze(WIDTH, HEIGHT, game_controller)
+
+game_controller = GameController(BOARD_LENGTH, BOARD_LENGTH)
+maze = Maze(BOARD_LENGTH, BOARD_LENGTH, game_controller)
 
 
 
 def setup():
-    size(WIDTH, HEIGHT)
+    size(BOARD_LENGTH, BOARD_LENGTH)
 
     
 def draw():
@@ -20,6 +21,6 @@ def draw():
     game_controller.update()
     
 def mousePressed():
-    x = mouseX // 100
-    y = mouseY // 100
+    x = mouseX // GRID_LENGTH
+    y = mouseY // GRID_LENGTH
     maze.add_disk(x, y)
