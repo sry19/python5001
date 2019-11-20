@@ -1,0 +1,54 @@
+disk.py
+1. test_constructor 
+    1.color  - must be 'black' or 'white'
+    2.row
+    3.column
+
+disks.py
+1. test_constructor
+    1.self.gc == gamecontroller
+    2.self.width == WIDTH
+    3.self.height == HEIGHT
+    4.self.row == self.height // 100
+    5.self.column == self.width // 100
+    6.self.white_count == 2
+    7.self.black_count == 2
+    8.self.disks_lst -> [[0 for _ in range(self.column)]
+                          for _ in range(self.row)]
+    9.test if there exists 4 tiles in the middle of the maze
+
+2.add_disk
+    input: x,y coordinate 
+    output: True or False
+          when player presses the mouse inside the maze, it is a valid input.
+    if the corresponding cell has had a tile, then we return False. Otherwise, 
+    we can add a disk to disks_lst and return True
+
+maze.py
+1. test_constructor
+    1.self.WIDTH = WIDTH
+    2.self.HEIGHT = HEIGHT
+    3.self.gc = game_controller
+    4.self.disks = Disks(self.WIDTH, self.HEIGHT, game_controller)
+    5.self.turn = 'black'
+
+2. update
+    if the grids are filled with disks, self.gc.game_over = True
+self.gc.winner records who wins the game, self.gc.number records the 
+tiles that the winner has. self.turn equals to 0 so that no player can put tile
+in the grids after we have a winner.
+    Otherwise, we do not do anything.
+
+3. add_disk
+   if self.turn does not equal to 'black' and 'white', it means game is over. 
+   Thus we cannot add disk to the grids.
+   if we can put a disk in this position, we do it and take turns. 
+   Otherwise, we do not do anying.
+
+game_controller.py
+1. test_constructor
+    1.self.WIDTH == WIDTH
+    2.self.HEIGHT == HEIGHT
+    3.self.game_over == False
+    4.self.winner == 'No one'
+    5.self.number == 0

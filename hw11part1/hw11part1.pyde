@@ -20,6 +20,6 @@ def draw():
     game_controller.update()
     
 def mousePressed():
-    x = mouseX
-    y = mouseY
+    x = mouseX // 100
+    y = mouseY // 100
     maze.add_disk(x, y)
