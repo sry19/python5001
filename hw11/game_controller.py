@@ -3,16 +3,18 @@ class GameController:
     def __init__(self, WIDTH, HEIGHT):
         self.WIDTH = WIDTH
         self.HEIGHT = HEIGHT
-        self.player_white_wins = False
-        self.player_black_wins = False
+        self.game_over = False
+        self.winner = 'No one'
+        self.number = 0
 
     def update(self):
-        """Carries out necessary actions if pinky or player wins"""
-        if self.player_white_wins:
-            fill(1)
+        """Carries out necessary actions if player wins"""
+        if self.game_over:
+            fill(255, 255, 0)
             textSize(50)
-            text("WHITE WINS", self.WIDTH/2 - 140, self.HEIGHT/2)
-        if self.player_black_wins:
-            fill(1)
-            textSize(50)
-            text("BLACK WINS", self.WIDTH/2 - 140, self.HEIGHT/2)
+            text("GAME OVER", self.WIDTH/2 - 140, self.HEIGHT/2 - 50)
+            text(self.winner + " Wins", self.WIDTH/2 - 140,
+                 self.HEIGHT/2 + 50)
+            textSize(40)
+            text('Winner has ' + str(self.number) + ' tiles',
+                 self.WIDTH/2 - 160, self.HEIGHT/2 + 150)

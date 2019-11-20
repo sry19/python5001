@@ -1,0 +1,71 @@
+data structure:
+nest list - stores all disks
+            uses (row index, column index) to represent their positions
+
+class:
+1.  disk - defines a single disk
+           1. __init__
+              1. color -  input: 'black' or 'white'
+                    in order to make it easier when we fill color, we change it to a rgb number
+              2. row index - on a 8x8 board, row index ranges from 0 to 8
+              3. col index - on a 8x8 board, column index ranges from 0 to 8
+           2. display - displays a disk on board
+           3. change color - changes color 'white' <-> 'black' if needed
+
+2.  disks - stores all disks
+           1. __init__
+              1.WIDTH: the width of board
+              2.row number: number of rows,
+                            we can change this number manually
+              3.col number:
+                            number of columns,
+                            it equals to the number of rows 
+              4.number of white disks:
+                            a counter to count white disks on the board
+              5.number of black disks:
+                            a counter to count black disks on the board
+              6.disks list -2D  
+                            first, append 4 disks in the middle
+                            a nest list which has (row number * column number) positions
+                            we can add disks to this positions in order to record them
+
+              7.game controller
+                            we pass game controller to this class in order to update the state of the game easily
+           2. display - displays all disks by calling disk.display()
+           3. add disk - adds a new disk to disks and increments the counter
+           4. change_color - by calling disk.changecolor() and updates counters
+           5. flip - given a color, a row index and a col index, flip all disks that can be fliped
+           6. is_valid - checks if the player can put disk in this position
+
+3.  maze - draws the maze and displays the disks
+           1. __init__
+              1.WIDTH - the width of the board
+              2.gamecontroller - manages the state of the game
+              3.disks  - initialize a nest list
+              6.current color - 'white' or 'black'
+           2.change color - by calling disks.changecolor()
+           3.check is valid - Checks if there is any place that player can put disk in
+           4.update - finds if anyone wins
+           5.display - displays the board and disks
+           6.add disks - checks if palyer can put disk, then add disk and flip
+
+4.  game controller - Maintains the state of the game
+           1. __init__
+                1.WIDTH - the width of the board
+                2.white wins - if computer wins, marks it 'True' 
+                3.black wins - if player wins, marks it 'False'
+           2. update - when a player wins, display some texts on the screen
+
+When the user tries to make an illegal move:
+    does not do anying and waits for another mouse press
+When the user makes a legal move:
+    adds a new disk and flips the disks between two disks which have the same color
+When it’s the computer’s turn
+    does two 'for' loops
+    trys all possible positions on the board and chooses a position which flips the most tiles
+    chooses the best position to put disk
+When the game is over (there are no more legal moves)
+    shows the score and the winner on the screen
+    no one can place tiles on the board
+
+* There are three control flow statements in Python - if, for and while.    
