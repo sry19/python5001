@@ -1,6 +1,5 @@
 from maze import Maze
 from game_controller import GameController
-from disks import Disks
 
 GRID_NUMBER = 4
 GRID_LENGTH = 100
