@@ -4,6 +4,7 @@ from disks import Disks
 
 GRID_NUMBER = 4
 GRID_LENGTH = 100
+GREEN = (6, 129, 34)
 
 
 game_controller = GameController(GRID_NUMBER * GRID_LENGTH,
@@ -17,7 +18,7 @@ def setup():
 
 
 def draw():
-    background(6, 129, 34)
+    background(*GREEN)
     maze.display()
     game_controller.update()
 

@@ -10,6 +10,11 @@ class Disk:
 
     def display(self):
         '''Draws the disk'''
-        fill(self.color)
-        ellipse(self.column * 100 + 50, self.row * 100 + 50, 90, 90)
+        DIAMETER = 90
+        POSITION = 50
+        SIDE_LENGTH = 100
 
+        fill(self.color)
+        ellipse(self.column * SIDE_LENGTH + POSITION,
+                self.row * SIDE_LENGTH + POSITION,
+                DIAMETER, DIAMETER)
