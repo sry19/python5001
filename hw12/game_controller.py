@@ -22,26 +22,31 @@ class GameController:
 
     def update(self):
         """Carries out necessary actions if pinky or player wins"""
+        ANNOUNCE_X = self.WIDTH/2 - 140
+        ANNOUNCE_Y = self.WIDTH/2
+        SCORE_X = self.WIDTH/2 - 170
+        SCORE_Y = self.WIDTH/2 + 150
+
         if self.player_white_wins:
             fill(*YELLOW)
             textSize(BIG_WORD)
-            text("WHITE WINS", self.WIDTH/2 - 140, self.WIDTH/2)
+            text("WHITE WINS", ANNOUNCE_X, ANNOUNCE_Y)
             textSize(SMALL_WORD)
             text('Winner has ' + str(self.number) + ' tiles',
-                 self.WIDTH/2 - 170, self.WIDTH/2 + 150)
+                 SCORE_X, SCORE_Y)
 
         elif self.player_black_wins:
             fill(*YELLOW)
             textSize(BIG_WORD)
-            text("BLACK WINS", self.WIDTH/2 - 140, self.WIDTH/2)
+            text("BLACK WINS", ANNOUNCE_X, ANNOUNCE_Y)
             textSize(SMALL_WORD)
             text('Winner has ' + str(self.number) + ' tiles',
-                 self.WIDTH/2 - 170, self.WIDTH/2 + 150)
+                 SCORE_X, SCORE_Y)
 
         elif self.tie:
             fill(*YELLOW)
             textSize(BIG_WORD)
-            text("TIE", self.WIDTH/2 - 140, self.WIDTH/2)
+            text("TIE", ANNOUNCE_X, ANNOUNCE_Y)
 
     def setup(self):
         if self.player_black_wins:
