@@ -1,10 +1,14 @@
+BLACK = 1
+WHITE = 255
+
+
 class Disk:
     '''A disk'''
     def __init__(self, color, row, column, gamecontroller):
         if color == 'white':
-            self.color = 255
+            self.color = WHITE
         elif color == 'black':
-            self.color = 1
+            self.color = BLACK
         self.row = row
         self.column = column
         self.gc = gamecontroller
@@ -19,8 +23,8 @@ class Disk:
 
     def change_color(self):
         '''Changes color of a disk'''
-        if self.color == 255:
-            self.color = 1
+        if self.color == WHITE:
+            self.color = BLACK
         else:
-            self.color = 255
+            self.color = WHITE
         self.display()
