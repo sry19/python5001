@@ -11,34 +11,44 @@ class Disks:
     def __init__(self, WIDTH, gamecontroller):
         self.gc = gamecontroller
         self.width = WIDTH
-        self.row = self.width // self.gc.side_length
-        self.column = self.width // self.gc.side_length
-        self.white_count = INITIAL_COUNT
-        self.black_count = INITIAL_COUNT
-        self.disks_lst = [[0 for _ in range(self.column)]
-                          for _ in range(self.row)]
-        self.disks_lst[self.row//2-1][self.column//2-1] = Disk('white',
-                                                               self.row//2 - 1,
-                                                               self.column // 2
-                                                               - 1,
+        if self.gc.grid_num == 0:
+            self.row = 0
+            self.column = 0
+            self.disks_lst = []
+            self.white_count = INITIAL_VAL
+            self.black_count = INITIAL_VAL
+        else:
+            self.row = self.width // self.gc.side_length
+            self.column = self.width // self.gc.side_length
+            self.white_count = INITIAL_COUNT
+            self.black_count = INITIAL_COUNT
+            self.disks_lst = [[0 for _ in range(self.column)]
+                              for _ in range(self.row)]
+            self.disks_lst[self.row//2-1][self.column//2-1] = Disk('white',
+                                                                   (self.row//2
+                                                                    - 1),
+                                                                   (self.column
+                                                                    // 2 - 1),
+                                                                   self.gc
+                                                                   )
+            self.disks_lst[self.row//2][self.column//2] = Disk('white',
+                                                               self.row//2,
+                                                               self.column//2,
                                                                self.gc
                                                                )
-        self.disks_lst[self.row//2][self.column//2] = Disk('white',
-                                                           self.row//2,
-                                                           self.column//2,
-                                                           self.gc
-                                                           )
-        self.disks_lst[self.row//2-1][self.column//2] = Disk('black',
-                                                             self.row//2 - 1,
-                                                             self.column//2,
-                                                             self.gc
-                                                             )
-        self.disks_lst[self.row//2][self.column//2-1] = Disk('black',
-                                                             self.row//2,
-                                                             self.column // 2
-                                                             - 1,
-                                                             self.gc
-                                                             )
+            self.disks_lst[self.row//2-1][self.column//2] = Disk('black',
+                                                                 (self.row//2
+                                                                  - 1),
+                                                                 (self.column
+                                                                  // 2),
+                                                                 self.gc
+                                                                 )
+            self.disks_lst[self.row//2][self.column//2-1] = Disk('black',
+                                                                 (self.row//2),
+                                                                 (self.column
+                                                                  // 2 - 1),
+                                                                 self.gc
+                                                                 )
 
     def display(self):
         """Calls each disks's display method"""

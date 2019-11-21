@@ -8,7 +8,10 @@ class GameController:
     def __init__(self, WIDTH, GRID_NUM):
         self.WIDTH = WIDTH
         self.grid_num = GRID_NUM
-        self.side_length = self.WIDTH / self.grid_num
+        if GRID_NUM == 0:
+            self.side_length = 0
+        else:
+            self.side_length = self.WIDTH // self.grid_num
         self.player_white_wins = False
         self.player_black_wins = False
         self.tie = False

@@ -3,7 +3,6 @@ from game_controller import GameController
 
 WIDTH = 400
 GRID_NUM = 8
-SIDE_LENGTH = WIDTH / GRID_NUM
 GREEN = (6, 129, 34)
 YELLOW = (255, 255, 0)
 TIME = 90
@@ -47,6 +46,7 @@ def draw():
 
 def mousePressed():
     if maze.turn == 'black':
-        x = mouseX // SIDE_LENGTH
-        y = mouseY // SIDE_LENGTH
-        maze.add_disk(x, y)
+        x = mouseX // (WIDTH // GRID_NUM)
+        y = mouseY // (WIDTH // GRID_NUM)
+        if 0 <= x < GRID_NUM and 0 <= y < GRID_NUM:
+            maze.add_disk(x, y)

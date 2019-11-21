@@ -13,7 +13,10 @@ class Maze:
                  game_controller):
         self.WIDTH = WIDTH
         self.grid_num = GRID_NUM
-        self.side = self.WIDTH / self.grid_num
+        if GRID_NUM == 0:
+            self.side = 0
+        else:
+            self.side = self.WIDTH / self.grid_num
         self.gc = game_controller
         self.disks = Disks(self.WIDTH, game_controller)
         self.turn = COLOR_BLACK

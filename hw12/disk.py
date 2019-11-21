@@ -27,4 +27,3 @@ class Disk:
             self.color = BLACK
         else:
             self.color = WHITE
-        self.display()
