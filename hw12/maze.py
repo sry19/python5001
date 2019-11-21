@@ -55,6 +55,7 @@ class Maze:
                 self.gc.number = self.disks.white_count
             self.turn = 0
             self.gc.game_over = True
+            self.gc.user_score = self.disks.black_count
         if not self.check_if_valid(COLOR_BLACK):
             self.turn = COLOR_WHITE
         elif not self.check_if_valid(COLOR_WHITE):

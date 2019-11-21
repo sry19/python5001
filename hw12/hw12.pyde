@@ -36,8 +36,7 @@ def draw():
             maze.add_disk_ai()
             count = TIME
 
-    if game_controller.game_over and game_controller.once and \
-       not game_controller.tie:
+    if game_controller.game_over and game_controller.once:
         count1 -= 1
         if count1 == 0:
             game_controller.once = False

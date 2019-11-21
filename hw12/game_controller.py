@@ -19,6 +19,7 @@ class GameController:
         self.game_over = False
         self.once = True
         self.records = []
+        self.user_score = 2
 
     def update(self):
         """Carries out necessary actions if pinky or player wins"""
@@ -49,17 +50,14 @@ class GameController:
             text("TIE", ANNOUNCE_X, ANNOUNCE_Y)
 
     def setup(self):
-        if self.player_black_wins:
-            answer = self.input('enter your name')
-        elif self.player_white_wins:
-            answer = 'computer'
+        answer = self.input('enter your name')
         if answer:
             print('hi ' + answer)
         elif answer == '':
             print('[empty string]')
         else:
             print(answer)  # Canceled dialog will print None
-        self.lst_add(answer, self.number)
+        self.lst_add(answer, self.user_score)
 
     def input(self, message=''):
         from javax.swing import JOptionPane

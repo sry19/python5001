@@ -17,6 +17,6 @@ How did you determine which piece to play next? Tell us about your “pick next 
                 if the number is the highest number so far, we mark it as the position ai wants to place tile in
         at the end of for loops, we know in which position ai can flip more tiles
 How often did your computer program beat you, or your friends, or whoever tested it out for you?
-    I played this game 17 times and computer program beat me 9 times
+    I played this game 17 times and computer program beats me 11 times
 How would you improve it in the future? 
     When ai finds there are several ways it can flip the most tiles, we can predict that which one can make player flip less tiles. 

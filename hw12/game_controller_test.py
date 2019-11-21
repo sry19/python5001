@@ -13,3 +13,4 @@ def test_contructor():
     assert gc.game_over is False
     assert gc.once is True
     assert gc.records == []
+    assert gc.user_score == 2
