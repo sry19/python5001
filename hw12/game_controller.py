@@ -41,7 +41,10 @@ class GameController:
             text("TIE", self.WIDTH/2 - 140, self.WIDTH/2)
 
     def setup(self):
-        answer = self.input('enter your name')
+        if self.player_black_wins:
+            answer = self.input('enter your name')
+        elif self.player_white_wins:
+            answer = 'computer'
         if answer:
             print('hi ' + answer)
         elif answer == '':
@@ -60,7 +63,11 @@ class GameController:
         f = open('scores.txt', 'r')
         if f:
             for line in f:
-                ans, num = line.strip().split(' ')
+                if not line or line.isspace():
+                    continue
+                line = line.strip()
+                idx = line.rfind(' ')
+                ans, num = line[:idx], line[idx+1:]
                 self.records.append([ans, num])
 
         f = open('scores.txt', 'w')
@@ -73,4 +80,6 @@ class GameController:
                 self.records.append([answer, number])
 
         for ans, num in self.records:
-            f.write(str(ans) + ' ' + str(num) + '\n')
+            if not ans:
+                continue
+            f.write(str(ans) + ' ' + str(num)+'\n')

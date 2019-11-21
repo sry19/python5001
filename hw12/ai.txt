@@ -1,0 +1,22 @@
+Did you attempt to make your computer player very smart -- i.e., do something more clever than just pick a random legal move?
+        Yes, ai tries to find a best position to place white tiles, in which more tiles can be fliped
+        walk through a for loop by row,
+            walk through a for loop by column, 
+                calculate the number of tiles which can be fliped in this position
+                if the number is the highest number so far, we mark it as the position ai wants to place tile in
+        at the end of for loops, we know in which position ai can flip more tiles
+
+If so, were you able to accomplish this? Is your computer player as smart as you would like?
+        Yes,
+        It is as smart as I would like because the posibilities that ai wins are greater than the posibilities human win
+
+How did you determine which piece to play next? Tell us about your “pick next move” algorithm
+        walk through a for loop by row,
+            walk through a for loop by column, 
+                calculate the number of tiles which can be fliped in this position
+                if the number is the highest number so far, we mark it as the position ai wants to place tile in
+        at the end of for loops, we know in which position ai can flip more tiles
+How often did your computer program beat you, or your friends, or whoever tested it out for you?
+    I played this game 17 times and computer program beat me 9 times
+How would you improve it in the future? 
+    When ai finds there are several ways it can flip the most tiles, we can predict that which one can make player flip less tiles. 
