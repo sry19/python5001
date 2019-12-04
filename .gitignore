@@ -2,3 +2,5 @@
 *.zip
 __pycache__
 .pytest_cache
+*$py.class
+lecture_exercise/
